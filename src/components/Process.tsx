@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { DM_Sans, Outfit } from "next/font/google";
 import { motion } from "framer-motion";
 import Container from "./Container";
@@ -102,8 +101,6 @@ const processSteps = [
 
 // Profesionální komponenta Process
 const Process = () => {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-
   return (
     <section className="py-16 lg:py-24 bg-white">
       <Container className="max-w-[78rem]">
@@ -135,8 +132,6 @@ const Process = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative"
-                onMouseEnter={() => setActiveStep(step.id)}
-                onMouseLeave={() => setActiveStep(null)}
               >
                 <div
                   className={`grid md:grid-cols-2 gap-x-16 gap-y-8 items-center ${
