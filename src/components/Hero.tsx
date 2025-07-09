@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-10 md:pt-0">
       <div className="container mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row items-center max-w-6xl mx-auto justify-center">
           <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pr-10">
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Ilustrační grafika */}
-          <div className="lg:w-1/3 relative">
+          <div className="lg:w-1/3 relative hidden md:block">
             <Image
               src="/iPhone.png"
               alt="E-shop vizualizace"

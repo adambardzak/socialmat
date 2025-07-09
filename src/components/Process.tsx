@@ -141,7 +141,7 @@ const Process = () => {
                   {/* Step content */}
                   <div
                     className={`${
-                      index % 2 === 1 ? "md:text-right col-1" : "col-2"
+                      index % 2 === 1 ? "md:text-right md:col-1" : "md:col-2"
                     }`}
                   >
                     <h3
