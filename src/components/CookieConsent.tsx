@@ -271,12 +271,18 @@ const CookieConsent = () => {
             </div>
           )}
           
-          <div className="mt-2 text-center">
+          <div className="mt-2 text-center flex justify-center space-x-4">
             <a 
               href="/cookies"
               className={`${dmSans.className} text-xs text-gray-500 hover:text-indigo-600 underline`}
             >
               Více o cookies
+            </a>
+            <a 
+              href="/privacy"
+              className={`${dmSans.className} text-xs text-gray-500 hover:text-indigo-600 underline`}
+            >
+              Ochrana soukromí
             </a>
           </div>
         </div>

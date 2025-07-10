@@ -112,7 +112,8 @@ export default function CookiesPage() {
               na jiných stránkách. Neukládají přímo osobní údaje, ale jsou
               založeny na jedinečné identifikaci vašeho prohlížeče a
               internetového zařízení. Pokud tyto cookies nepovolíte, budete mít
-              méně cílenou reklamu.
+              méně cílenou reklamu. Více informací o tom, jak zpracováváme vaše osobní údaje, 
+              najdete v našich <a href="/privacy" className="text-indigo-600 hover:text-indigo-800 transition-colors">Zásadách ochrany osobních údajů</a>.
             </p>
             <p>Používáme následující marketingové nástroje:</p>
             <ul>

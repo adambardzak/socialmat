@@ -45,7 +45,7 @@ const footerLinks = [
     title: "Právní informace",
     links: [
       { name: "Obchodní podmínky", href: "/obchodni-podminky" },
-      { name: "Ochrana osobních údajů", href: "/gdpr" },
+      { name: "Ochrana osobních údajů", href: "/privacy" },
       { name: "Cookies", href: "/cookies" },
     ],
   },
@@ -173,7 +173,7 @@ const Footer: React.FC = () => {
                 <Link href="/obchodni-podminky" className={`${dmSans.className} text-sm text-gray-500 hover:text-indigo-600 transition-colors`}>
                   Obchodní podmínky
                 </Link>
-                <Link href="/gdpr" className={`${dmSans.className} text-sm text-gray-500 hover:text-indigo-600 transition-colors`}>
+                <Link href="/privacy" className={`${dmSans.className} text-sm text-gray-500 hover:text-indigo-600 transition-colors`}>
                   Ochrana soukromí
                 </Link>
                 <Link href="/cookies" className={`${dmSans.className} text-sm text-gray-500 hover:text-indigo-600 transition-colors`}>
