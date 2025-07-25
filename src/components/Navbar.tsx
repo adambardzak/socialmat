@@ -83,6 +83,14 @@ function Navbar() {
             </li>
             <li>
               <Link
+                href="/instagram-audit"
+                className={`${dmSans.className} text-orange-600 hover:text-orange-700 font-bold transition-colors whitespace-nowrap`}
+              >
+                🎁 ZDARMA Audit
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/kontakt"
                 className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
               >
@@ -94,11 +102,12 @@ function Navbar() {
 
         {/* CTA Tlačítko */}
         <div className="hidden md:flex justify-end">
-          <button
+          <Link
+            href="/#kontakt"
             className={`${outfit.className} px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-1px]`}
           >
             Chci konzultaci zdarma
-          </button>
+          </Link>
         </div>
 
         {/* Mobilní hamburger menu - absolutní pozice vpravo */}
@@ -149,6 +158,15 @@ function Navbar() {
             </li>
             <li>
               <Link
+                href="/instagram-audit"
+                className={`${dmSans.className} block text-orange-600 hover:text-orange-700 font-bold transition-colors`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                🎁 ZDARMA Audit
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/kontakt"
                 className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -157,12 +175,13 @@ function Navbar() {
               </Link>
             </li>
             <li className="pt-2">
-              <button
-                className={`${outfit.className} w-full px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300`}
+              <Link
+                href="/#kontakt"
+                className={`${outfit.className} block w-full px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 text-center`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Chci konzultaci zdarma
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

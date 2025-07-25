@@ -1,0 +1,54 @@
+import React from 'react';
+
+const InstagramShop1 = () => (
+  <svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="390" height="844" fill="white"/>
+    
+    {/* Instagram header */}
+    <rect y="0" width="390" height="60" fill="white"/>
+    <text x="20" y="38" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="#262626">instagram</text>
+    <circle cx="355" cy="30" r="12" stroke="#262626" strokeWidth="1.5" fill="none"/>
+    <circle cx="320" cy="30" r="12" stroke="#262626" strokeWidth="1.5" fill="none"/>
+    
+    {/* Profile info */}
+    <circle cx="60" cy="100" r="30" fill="#F4F4F4"/>
+    <text x="110" y="95" fontFamily="Arial" fontSize="16" fontWeight="bold" fill="#262626">fashion_eshop</text>
+    <text x="110" y="115" fontFamily="Arial" fontSize="14" fill="#737373">Fashion E-shop</text>
+    
+    {/* Stats */}
+    <text x="40" y="160" fontFamily="Arial" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#262626">248</text>
+    <text x="40" y="178" fontFamily="Arial" fontSize="14" textAnchor="middle" fill="#737373">Posts</text>
+    
+    <text x="130" y="160" fontFamily="Arial" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#262626">10.5K</text>
+    <text x="130" y="178" fontFamily="Arial" fontSize="14" textAnchor="middle" fill="#737373">Followers</text>
+    
+    <text x="220" y="160" fontFamily="Arial" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#262626">256</text>
+    <text x="220" y="178" fontFamily="Arial" fontSize="14" textAnchor="middle" fill="#737373">Following</text>
+    
+    {/* Action button */}
+    <rect x="40" y="200" width="310" height="36" rx="8" fill="#EBF4FF"/>
+    <text x="195" y="223" fontFamily="Arial" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#4F46E5">Visit Shop</text>
+    
+    {/* Product Grid */}
+    <rect x="10" y="260" width="120" height="120" fill="#F4F4F4"/>
+    <rect x="135" y="260" width="120" height="120" fill="#F4F4F4"/>
+    <rect x="260" y="260" width="120" height="120" fill="#F4F4F4"/>
+    
+    <rect x="10" y="385" width="120" height="120" fill="#F4F4F4"/>
+    <rect x="135" y="385" width="120" height="120" fill="#F4F4F4"/>
+    <rect x="260" y="385" width="120" height="120" fill="#F4F4F4"/>
+    
+    {/* Bottom navigation */}
+    <rect y="784" width="390" height="60" fill="white"/>
+    <rect x="20" y="804" width="25" height="25" fill="#F4F4F4"/>
+    <rect x="95" y="804" width="25" height="25" fill="#F4F4F4"/>
+    <rect x="175" y="804" width="25" height="25" fill="#F4F4F4"/>
+    <rect x="255" y="804" width="25" height="25" fill="#F4F4F4"/>
+    <circle cx="355" cy="814" r="15" fill="#F4F4F4"/>
+    
+    {/* Badge notification */}
+    <circle cx="355" cy="30" r="4" fill="#E5002B"/>
+  </svg>
+);
+
+export default InstagramShop1;

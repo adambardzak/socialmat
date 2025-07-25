@@ -56,47 +56,83 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              {/* CTA tlačítko s gradientem */}
+              {/* Primární CTA tlačítko - Lead magnet */}
+              <a
+                href="/instagram-audit"
+                className={`${outfit.className} w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transform hover:translate-y-[-2px]`}
+                aria-label="Získat zdarma Instagram audit"
+              >
+                🎁 ZDARMA Instagram Audit (7.500 Kč)
+              </a>
+
+              {/* Sekundární akce - Přímý kontakt */}
               <button
                 onClick={() => scrollTo("#kontakt")}
-                className={`${outfit.className} w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transform hover:translate-y-[-2px]`}
-                aria-label="Přejít na kontaktní formulář"
+                className={`${dmSans.className} w-full sm:w-auto px-6 py-3.5 text-indigo-600 font-bold border-2 border-indigo-500 rounded-lg hover:bg-indigo-50 transition-all duration-300 text-center`}
               >
-                Chci zvýšit prodeje
-              </button>
-
-              {/* Sekundární akce */}
-              <button
-                onClick={() => scrollTo("#sluzby")}
-                className={`${dmSans.className} w-full sm:w-auto px-6 py-3.5 text-indigo-600 font-semibold border-2 border-indigo-600 rounded-lg hover:bg-indigo-50 transition-all duration-300`}
-              >
-                Zjistit více
+                Nebo rovnou konzultace
               </button>
             </div>
 
-            {/* Doplňková informace pod tlačítkem s ikonami */}
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 text-gray-600">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-400 to-blue-300 border-2 border-white flex items-center justify-center text-xs font-bold text-white"
-                  >
-                    {i}
-                  </div>
-                ))}
+            {/* Urgence banner */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 rounded-lg">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                <span className={`${outfit.className} text-sm font-bold text-orange-800 uppercase tracking-wide`}>
+                  Omezená kapacita
+                </span>
               </div>
-              <p className={`${dmSans.className} ml-2 text-sm font-medium`}>
-                Pomáháme <span className="font-bold text-indigo-600">50+</span>{" "}
-                e-shopům po celé ČR
+              <p className={`${dmSans.className} text-sm text-orange-700`}>
+                Bereme pouze <strong>3 nové klienty měsíčně</strong> pro zajištění kvality. Zbývá <strong>1 místo</strong> pro leden 2025.
               </p>
+            </div>
+
+            {/* Social proof statistiky */}
+            <div className="mt-8 text-center lg:text-left">
+              <p
+                className={`${dmSans.className} text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4`}
+              >
+                ZA POSLEDNÍ ROK
+              </p>
+              <div className="flex flex-row justify-between gap-4 max-w-lg mx-auto lg:mx-0">
+                <div className="text-center lg:text-left w-fit">
+                  <div
+                    className={`${outfit.className} text-2xl font-bold text-indigo-600 mb-1`}
+                  >
+                    90 TISÍC
+                  </div>
+                  <div className={`${dmSans.className} text-sm text-gray-600`}>
+                    SLEDUJÍCÍCH
+                  </div>
+                </div>
+                <div className="text-center lg:text-left w-fit">
+                  <div
+                    className={`${outfit.className} text-2xl font-bold text-indigo-600 mb-1`}
+                  >
+                    15 MILIONŮ
+                  </div>
+                  <div className={`${dmSans.className} text-sm text-gray-600`}>
+                    ZHLÉDNUTÍ ORGANICKY
+                  </div>
+                </div>
+                <div className="text-center lg:text-left w-fit">
+                  <div
+                    className={`${outfit.className} text-2xl font-bold text-indigo-600 mb-1`}
+                  >
+                    150 %
+                  </div>
+                  <div className={`${dmSans.className} text-sm text-gray-600`}>
+                    NÁRŮST MĚSÍČNÍCH TRŽEB
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Ilustrační grafika */}
           <div className="lg:w-1/3 relative hidden md:block">
             <Image
-              src="/iPhone.png"
+              src="/iphone_ig-stats.png"
               alt="E-shop vizualizace"
               width={600}
               height={600}
