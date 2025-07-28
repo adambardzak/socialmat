@@ -141,33 +141,65 @@ const Footer: React.FC = () => {
             </motion.div>
 
             {/* Navigation Links */}
-            {footerLinks.map((section, index) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+            {/* Pouze právní informace */}
+            {/* Sekce webu s odkazy z navbaru */}
+            <motion.div
+              key="web-section"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className=""
+            >
+              <h3 className={`${outfit.className} text-lg font-bold text-gray-900 mb-4`}>Web</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/ebook-zdarma" className={`${dmSans.className} text-orange-600 hover:text-orange-700 font-bold transition-colors whitespace-nowrap`}>
+                    📚 ZDARMA E-book
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#process" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                    Služby
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#testimonials" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                    Reference
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#kontakt" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                    Kontakt
+                  </Link>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              key={footerLinks[2].title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3
+                className={`${outfit.className} text-lg font-bold text-gray-900 mb-4`}
               >
-                <h3
-                  className={`${outfit.className} text-lg font-bold text-gray-900 mb-4`}
-                >
-                  {section.title}
-                </h3>
-                <ul className="space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link.name}>
-                      <Link
-                        href={link.href}
-                        className={`${dmSans.className} text-gray-600 hover:text-indigo-600 transition-colors`}
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                {footerLinks[2].title}
+              </h3>
+              <ul className="space-y-3">
+                {footerLinks[2].links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className={`${dmSans.className} text-gray-600 hover:text-indigo-600 transition-colors`}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
 
           {/* Divider */}
