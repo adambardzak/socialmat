@@ -25,6 +25,15 @@ const outfit = Outfit({
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Listen for logo animation trigger from Hero
+  const [logoAnimated, setLogoAnimated] = useState(false);
+
+  useEffect(() => {
+    // Listen for logoToNavbar event from Hero
+    const handler = () => setLogoAnimated(true);
+    window.addEventListener("logoToNavbar", handler);
+    return () => window.removeEventListener("logoToNavbar", handler);
+  }, []);
 
   // Efekt pro detekci scrollování
   useEffect(() => {
@@ -59,7 +68,14 @@ function Navbar() {
               href="/"
               className={`${outfit.className} text-xl md:text-2xl font-bold text-indigo-600 flex items-center`}
             >
-              <span className="bg-gradient-to-r from-indigo-600 to-blue-500 text-transparent bg-clip-text">
+              <span
+                className={`bg-gradient-to-r from-indigo-600 to-blue-500 text-transparent bg-clip-text transition-all duration-700 ${
+                  logoAnimated
+                    ? "scale-100 translate-y-0"
+                    : "scale-75 translate-y-[-60px]"
+                }`}
+                style={{ willChange: "transform" }}
+              >
                 socialmat
               </span>
             </Link>
