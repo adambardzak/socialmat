@@ -30,7 +30,7 @@ export default function FAQ() {
     {
       question: "Kolik stojí vaše služby?",
       answer:
-        "Každý projekt kalkulujeme individuálně podle rozsahu práce, vašich cílů a rozpočtu. Orientačně se pohybujeme v rozmezí 15 000 - 45 000 Kč měsíčně. Během bezplatné konzultace vám připravíme přesnou kalkulaci na míru vašemu projektu. Investice se obvykle vrátí během 3-6 měsíců.",
+        "Každý projekt kalkulujeme individuálně podle rozsahu práce, vašich cílů a rozpočtu. Orientačně se pohybujeme v desítkách tisíc měsíčně. Během bezplatné konzultace vám připravíme přesnou kalkulaci na míru vašemu projektu. Investice se obvykle vrátí během 3-6 měsíců.",
     },
     {
       question: "Kolik času musíme investovat do spolupráce?",
@@ -40,7 +40,7 @@ export default function FAQ() {
     {
       question: "Jak funguje tvorba obsahu pro Instagram?",
       answer:
-        "Vytváříme kompletní strategii obsahu založenou na analýze vaší cílové skupiny a konkurence. Produkujeme virální videa, grafiky a texty. Vše ladíme s vaší značkou a produkty. Obsah plánujeme měsíc dopředu a vy ho jen schvalujete před publikováním.",
+        "Vytváříme kompletní strategii obsahu založenou na analýze vaší cílové skupiny a konkurence. Produkujeme virální videa, grafiky a texty. Vše ladíme s vaší značkou a produkty. Obsah optimalizujeme každý týden a důkladně analyzujeme veškeré výsledky.",
     },
     {
       question: "Co když nemáme kvalitní webové stránky?",
@@ -114,13 +114,17 @@ export default function FAQ() {
           className="text-center mt-12"
         >
           <div className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-10 max-w-2xl mx-auto border border-gray-200">
-            <h3 className={`${outfit.className} text-xl md:text-2xl font-bold text-gray-900 mb-4`}>
+            <h3
+              className={`${outfit.className} text-xl md:text-2xl font-bold text-gray-900 mb-4`}
+            >
               Nenašli jste odpověď na svou otázku?
             </h3>
-            <p className={`${dmSans.className} text-gray-600 mb-6 leading-relaxed`}>
+            <p
+              className={`${dmSans.className} text-gray-600 mb-6 leading-relaxed`}
+            >
               Neváhejte nás kontaktovat přímo, rádi zodpovíme jakékoliv dotazy
             </p>
-            
+
             <button
               className={`${outfit.className} px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transform hover:translate-y-[-2px]`}
             >

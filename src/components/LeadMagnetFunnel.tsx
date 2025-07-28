@@ -70,28 +70,13 @@ const LeadMagnetStep: React.FC<StepProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-36">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-36 pb-24">
       <Container className="max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Urgence banner */}
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-4 px-6 rounded-xl mb-8 shadow-lg">
-            <div className="flex items-center justify-center gap-2">
-              <Clock className="w-5 h-5" />
-              <span
-                className={`${outfit.className} font-bold text-sm md:text-base`}
-              >
-                AKCE KONČÍ ZÍTRA - POUZE PRO PRVNÍCH 50 LIDÍ!
-              </span>
-            </div>
-            <div className={`${dmSans.className} text-sm mt-1 opacity-90`}>
-              Již 127 lidí si stáhlo e-book tento týden
-            </div>
-          </div>
-
           <div className="text-center mb-12">
             <div className="inline-block p-4 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-2xl mb-6">
               <Gift className="w-12 h-12 text-indigo-600 mx-auto" />
@@ -134,24 +119,19 @@ const LeadMagnetStep: React.FC<StepProps> = ({
               <div className="space-y-6">
                 {[
                   {
-                    icon: "�",
-                    title: "5 způsobů monetizace Instagramu",
-                    desc: "Osvědčené metody, jak začít vydělávat už za 30 dní bez vlastních produktů",
+                    icon: "📡",
+                    title: "Co Vám o algoritmu neřekli (a měli by)",
+                    desc: "Odhalte klíčový pilíř, na kterém Instagram staví dosah — a proč většina lidí nevědomky sabotuje svůj růst.",
                   },
                   {
-                    icon: "�",
-                    title: "Strategie rychlého růstu",
-                    desc: "Jak získat tisíce kvalitních followerů, kteří skutečně kupují",
+                    icon: "🧲",
+                    title: "Strategie, která přitahuje zákazníky",
+                    desc: "Naučíte se, jak z Vašeho profilu vytvořit stroj na důvěru a objednávky. Žádné triky. Jen ověřený systém.",
                   },
                   {
                     icon: "💰",
-                    title: "Automatizace prodeje",
-                    desc: "Nastavte si Instagram tak, aby prodával 24/7 i když spíte",
-                  },
-                  {
-                    icon: "🎯",
-                    title: "Content strategie",
-                    desc: "Typy příspěvků, které generují nejvíce prodejů a engagement",
+                    title: "Organický prodej na autopilota",
+                    desc: "Získáte metodu, která prodává bez vypisování do zpráv, bez reklam a bez vyhoření. Jen Vy, Váš obsah a správně nastavená strategie.",
                   },
                 ].map((item, index) => (
                   <div
@@ -181,14 +161,14 @@ const LeadMagnetStep: React.FC<StepProps> = ({
                   <span
                     className={`${outfit.className} font-bold text-green-800 text-lg`}
                   >
-                    Záruka výsledků
+                    Záruka efektivity
                   </span>
                 </div>
                 <p
                   className={`${dmSans.className} text-green-700 leading-relaxed`}
                 >
-                  Pokud e-book neobsahuje minimálně 3 strategie, které můžete
-                  implementovat hned, vrátíme vám čas + pošleme bonus.
+                  Pokud e-book neobsahuje minimálně 3 nové informace, které
+                  můžete implementovat hned, vrátíme vám čas + pošleme bonus.
                 </p>
               </div>
             </div>
@@ -247,41 +227,6 @@ const LeadMagnetStep: React.FC<StepProps> = ({
                   />
                 </div>
 
-                <div>
-                  <label
-                    className={`${dmSans.className} block text-sm font-semibold text-gray-700 mb-2`}
-                  >
-                    Telefon (volitelné)
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={`${dmSans.className} w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-500 bg-white`}
-                    placeholder="+420 xxx xxx xxx"
-                    autoComplete="tel"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    className={`${dmSans.className} block text-sm font-semibold text-gray-700 mb-2`}
-                  >
-                    Instagram handle *
-                  </label>
-                  <input
-                    type="text"
-                    name="instagramHandle"
-                    value={formData.instagramHandle}
-                    onChange={handleInputChange}
-                    className={`${dmSans.className} w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-500 bg-white`}
-                    placeholder="@vasinstagram"
-                    required
-                    autoComplete="username"
-                  />
-                </div>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -289,6 +234,15 @@ const LeadMagnetStep: React.FC<StepProps> = ({
                 >
                   {isSubmitting ? "Odesílám..." : "📚 STÁHNOUT ZDARMA E-BOOK"}
                 </button>
+                <p className="text-start text-sm text-gray-500">
+                  Kliknutim na tlačítko souhlasíte s{" "}
+                  <a
+                    href="/privacy"
+                    className="text-indigo-600 hover:text-indigo-800 transition-colors"
+                  >
+                    zásadami ochrany osobních údajů
+                  </a>
+                </p>
               </form>
 
               <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-500">
@@ -299,35 +253,6 @@ const LeadMagnetStep: React.FC<StepProps> = ({
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500" />
                   <span>100% zdarma</span>
-                </div>
-              </div>
-
-              {/* Social proof */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="flex items-center justify-between text-sm">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-indigo-600" />
-                    <span className={`${dmSans.className} text-gray-600`}>
-                      <strong>1,247</strong> stažení
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                      />
-                    ))}
-                    <span className={`${dmSans.className} text-gray-600 ml-1`}>
-                      4.9/5
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-3 text-center">
-                  <p className={`${dmSans.className} text-xs text-gray-500`}>
-                    &ldquo;Díky e-booku jsem za měsíc vydělal první peníze z
-                    Instagramu!&rdquo; - Tereza M.
-                  </p>
                 </div>
               </div>
             </div>
@@ -364,7 +289,7 @@ const ThankYouStep: React.FC<
           <h1
             className={`${outfit.className} text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6`}
           >
-            Skvělé! E-book je na cestě �
+            Skvělé! E-book je na cestě 🚀
           </h1>
 
           <p
@@ -378,7 +303,9 @@ const ThankYouStep: React.FC<
           </p>
 
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
-            <h3 className={`${outfit.className} text-xl font-bold text-blue-800 mb-4`}>
+            <h3
+              className={`${outfit.className} text-xl font-bold text-blue-800 mb-4`}
+            >
               📚 Váš e-book je připraven
             </h3>
             <p className={`${dmSans.className} text-blue-700 mb-4`}>
@@ -395,9 +322,9 @@ const ThankYouStep: React.FC<
               </a>
               <button
                 onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/ebook.html';
-                  link.download = 'instagram-automat-na-penize.html';
+                  const link = document.createElement("a");
+                  link.href = "/ebook.html";
+                  link.download = "instagram-automat-na-penize.html";
                   link.click();
                 }}
                 className={`${outfit.className} flex-1 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg text-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:translate-y-[-1px]`}
@@ -405,7 +332,9 @@ const ThankYouStep: React.FC<
                 💾 STÁHNOUT
               </button>
             </div>
-            <p className={`${dmSans.className} text-blue-600 text-sm mt-3 text-center`}>
+            <p
+              className={`${dmSans.className} text-blue-600 text-sm mt-3 text-center`}
+            >
               💡 Tip: Uložte si stránku jako záložku pro snadný přístup
             </p>
           </div>
@@ -420,7 +349,7 @@ const ThankYouStep: React.FC<
               className={`${dmSans.className} text-lg text-orange-700 mb-6 leading-relaxed`}
             >
               Protože jste si stáhli e-book, máte jedinečnou příležitost získat{" "}
-              <strong>60minutovou osobní konzultaci se mnou za 500 Kč</strong>{" "}
+              <strong>60minutovou osobní konzultaci s námi za 500 Kč</strong>{" "}
               místo běžných 2.500 Kč.
             </p>
             <div className="bg-white/50 rounded-lg p-4 mb-4">
@@ -532,11 +461,11 @@ const TripwireStep: React.FC<Pick<StepProps, "setCurrentStep">> = ({
 
               <div className="space-y-4">
                 {[
-                  "Analýzu vašeho současného Instagramu a identifikaci příležitostí",
-                  "Personalizovanou strategii pro růst o 300-500 followers měsíčně",
-                  "Konkrétní content plán na příští měsíc",
-                  "Optimalizaci bio a highlights pro vyšší konverze",
-                  "Strategie monetizace - jak začít vydělávat už za 30 dní",
+                  "Komplexní audit Vašeho profilu a webu – co vám hned teď brání v růstu",
+                  "Jasný plán obsahu, který vám přivede zákazníky (ne jen srdíčka)",
+                  "Strategii na míru, jak z vašeho IG udělat stroj na důvěru a prodej",
+                  "Konkrétní kroky k optimalizaci Vašeho webu/e-shopu/prodejní stránky",
+                  "Tipy pro optimalizaci profilu a webu pro vyšší konverze",
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -562,19 +491,7 @@ const TripwireStep: React.FC<Pick<StepProps, "setCurrentStep">> = ({
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-indigo-500" />
                     <span className={`${dmSans.className} text-gray-700`}>
-                      Content kalendář na celý měsíc
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-indigo-500" />
-                    <span className={`${dmSans.className} text-gray-700`}>
-                      Šablony pro Instagram Stories, které prodávají
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-indigo-500" />
-                    <span className={`${dmSans.className} text-gray-700`}>
-                      Sleva 30% na plnou spolupráci
+                      Šablona do Stories v hodnotě 997 Kč – zdarma
                     </span>
                   </div>
                 </div>
@@ -695,19 +612,14 @@ const MainOfferStep: React.FC = () => {
                   <h2
                     className={`${outfit.className} text-2xl md:text-3xl font-bold mb-4 text-gray-900`}
                   >
-                    Kompletní Instagram Management + Digitální Marketing
+                    Kompletní Instagram Management + Optimalizace Webových
+                    Stránek
                   </h2>
                   <div className="flex items-center justify-center gap-3 mb-6">
-                    <span className="text-gray-500 line-through text-xl">
-                      Od 25.000 Kč
-                    </span>
                     <span
                       className={`${outfit.className} text-4xl md:text-5xl font-black text-indigo-600`}
                     >
-                      Od 15.000 Kč
-                    </span>
-                    <span className={`${dmSans.className} text-gray-600`}>
-                      / měsíc
+                      Se slevou 10 000 Kč
                     </span>
                   </div>
                   <p className="text-gray-600 text-sm">
@@ -720,22 +632,27 @@ const MainOfferStep: React.FC = () => {
                     <h3
                       className={`${outfit.className} text-lg font-bold mb-4 flex items-center gap-2 text-gray-900`}
                     >
-                      🚀 Instagram Management:
+                      🚀 INSTAGRAM MANAGEMENT:
                     </h3>
                     <ul className="space-y-2">
                       {[
-                        "Profesionální content tvorba (5x týdně)",
-                        "Stories strategie + highlights",
-                        "Community management a komunikace",
-                        "Influencer spolupráce",
-                        "Detailní analytics a reporting",
-                      ].map((item, index) => (
+                        "15+ Reels scénářů měsíčně",
+                        "Kompletní střih a editace videí",
+                        "Profesionální natáčení obsahu (volitelné)",
+                        "Kompletní správa profilu",
+                        "Optimalizace BIO + Storysety",
+                        "Grafika profilu",
+                        "Direct AI funneling",
+                        "Copywriting",
+                        "Týdenní reporting + konzultace",
+                        "Pokročilá analýza a tracking výkonu",
+                      ].map((bold, index) => (
                         <li
                           key={index}
                           className={`${dmSans.className} text-gray-700 flex items-center gap-2 text-sm`}
                         >
                           <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          {item}
+                          <span className="font-bold">{bold}</span>
                         </li>
                       ))}
                     </ul>
@@ -745,22 +662,26 @@ const MainOfferStep: React.FC = () => {
                     <h3
                       className={`${outfit.className} text-lg font-bold mb-4 flex items-center gap-2 text-gray-900`}
                     >
-                      � Digitální Marketing:
+                      💻 VÝKONNÉ WEBOVÉ STRÁNKY:
                     </h3>
                     <ul className="space-y-2">
                       {[
-                        "Reklamy na Instagramu a Facebooku",
-                        "Landing page tvorba a optimalizace",
-                        "Email marketing automatizace",
-                        "Konverzní optimalizace webu",
-                        "SEO a Google Ads kampaně",
-                      ].map((item, index) => (
+                        "UX audit",
+                        "SEO audit",
+                        "Monitoring chování uživatelů",
+                        "A/B testing",
+                        "Copywriting",
+                        "Web design",
+                        "Web development",
+                        "Optimalizace rychlosti načítání",
+                        "Responzivní design",
+                      ].map((bold, index) => (
                         <li
                           key={index}
                           className={`${dmSans.className} text-gray-700 flex items-center gap-2 text-sm`}
                         >
                           <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                          {item}
+                          <span className="font-bold">{bold}</span>
                         </li>
                       ))}
                     </ul>
@@ -771,7 +692,7 @@ const MainOfferStep: React.FC = () => {
                   <h3
                     className={`${outfit.className} text-lg font-bold mb-4 text-center text-green-800`}
                   >
-                    🎯 Garantované výsledky během 90 dní:
+                    🎯 Reálné výsledky za 90 dní:
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                     <div>
@@ -847,10 +768,9 @@ const MainOfferStep: React.FC = () => {
 
                 <ul className="space-y-3 mb-6">
                   {[
-                    "5 způsobů monetizace Instagramu",
-                    "Základní strategie růstu",
-                    "Content tips a triky",
-                    "PDF průvodce k samostudiu",
+                    "Co Vám o algoritmu neřekli (a měli by)",
+                    "Strategie, která přitahuje zákazníky",
+                    "Organický prodej na autopilota",
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
@@ -876,11 +796,13 @@ const MainOfferStep: React.FC = () => {
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    "Profesionální řízení s garantovanými výsledky",
-                    "Ušetříte 40+ hodin měsíčně vlastního času",
-                    "Komplexní strategie napříč všemi kanály",
-                    "Měřitelný ROI a pravidelné reporty",
-                    "Dedikovaný tým odborníků pro váš projekt",
+                    "Nemusíte nic vymýšlet ani ztrácet čas",
+                    "Raketový růst bez reklam",
+                    "Z profilu se stane prodejní kanál",
+                    "Web, který prodává — ne odrazuje",
+                    "Systém, ne další chaos",
+                    "První výsledky do pár týdnů",
+                    "Aktivní komunikace a transparentnost",
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
@@ -932,14 +854,8 @@ const LeadMagnetFunnel: React.FC = () => {
     e.preventDefault();
 
     // Validace formuláře
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.instagramHandle.trim()
-    ) {
-      alert(
-        "Prosím vyplňte všechna povinná pole (jméno, email, Instagram handle)"
-      );
+    if (!formData.name.trim() || !formData.email.trim()) {
+      alert("Prosím vyplňte všechna povinná pole (jméno, email)");
       return;
     }
 
@@ -948,10 +864,10 @@ const LeadMagnetFunnel: React.FC = () => {
 
     try {
       // API call pro uložení leadu a doručení e-booku
-      const response = await fetch('/api/lead-magnet', {
-        method: 'POST',
+      const response = await fetch("/api/lead-magnet", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -959,18 +875,18 @@ const LeadMagnetFunnel: React.FC = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Došlo k chybě');
+        throw new Error(result.error || "Došlo k chybě");
       }
 
       // Track successful submission
       trackFunnelEvent("lead_form_submit", "lead-magnet", {
         email: formData.email,
-        ebookDelivered: true
+        ebookDelivered: true,
       });
 
       // Open e-book in new tab
       if (result.data?.downloadUrl) {
-        window.open(result.data.downloadUrl, '_blank');
+        window.open(result.data.downloadUrl, "_blank");
       }
 
       setCurrentStep("thank-you");
@@ -979,9 +895,13 @@ const LeadMagnetFunnel: React.FC = () => {
     } catch (error) {
       console.error("Error saving lead:", error);
       trackFunnelEvent("funnel_visit", "lead-magnet", {
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : "Unknown error",
       });
-      alert(error instanceof Error ? error.message : "Došlo k chybě při odesílání formuláře. Zkuste to prosím znovu.");
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Došlo k chybě při odesílání formuláře. Zkuste to prosím znovu."
+      );
     } finally {
       setIsSubmitting(false);
     }

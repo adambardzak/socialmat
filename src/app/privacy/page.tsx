@@ -17,9 +17,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Zásady ochrany osobních údajů | Socialmat",
+  title: "Zásady ochrany osobních údajů | Socialmat (BITTERLOVE s.r.o.)",
   description:
-    "Informace o tom, jak zpracováváme osobní údaje a chráníme vaše soukromí",
+    "Informace o tom, jak zpracováváme osobní údaje a chráníme vaše soukromí. Socialmat je značka společnosti BITTERLOVE s.r.o.",
 };
 
 export default function PrivacyPage() {
@@ -44,9 +44,9 @@ export default function PrivacyPage() {
               Správce údajů
             </h2>
             <p>
-              Správcem vašich osobních údajů je společnost Socialmat s.r.o., IČO: 123 45 678, se sídlem 
-              Havlíčkova 123, 120 00 Praha 2, Česká republika, zapsaná v obchodním rejstříku vedeném Městským 
-              soudem v Praze, oddíl C, vložka 12345 (dále jen &ldquo;my&rdquo; nebo &ldquo;správce&rdquo;).
+              Správcem vašich osobních údajů je společnost BITTERLOVE s.r.o., IČO: 21977127, se sídlem 
+              Rybná 716/24, Staré Město, 110 00 Praha, Česká republika, zapsaná v obchodním rejstříku vedeném Městským 
+              soudem v Praze, oddíl C, vložka [DOPLNIT] (dále jen &ldquo;my&rdquo; nebo &ldquo;správce&rdquo;). Socialmat je obchodní značka společnosti BITTERLOVE s.r.o.
             </p>
 
             <h2 className={`${outfit.className} text-2xl font-bold mt-10 mb-4`}>
@@ -213,17 +213,10 @@ export default function PrivacyPage() {
               ke zpracování vašich osobních údajů, kontaktujte nás:
             </p>
             <p>
-              Email:{" "}
-              <a
-                href="mailto:info@socialmat.cz"
-                className="text-indigo-600 hover:text-indigo-800 transition-colors"
-              >
-                info@socialmat.cz
-              </a>
-              <br />
-              Telefon: +420 777 888 999
-              <br />
-              Adresa: Havlíčkova 123, 120 00 Praha 2
+              Email: <a href="mailto:info@socialmat.cz" className="text-indigo-600 hover:text-indigo-800 transition-colors">info@socialmat.cz</a><br />
+              Telefon: +420 777 888 999<br />
+              Adresa: Rybná 716/24, Staré Město, 110 00 Praha<br />
+              Socialmat je obchodní značka společnosti BITTERLOVE s.r.o.<br />
             </p>
           </div>
         </div>

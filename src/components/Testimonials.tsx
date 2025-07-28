@@ -29,8 +29,8 @@ const outfit = Outfit({
 const testimonials = [
   {
     id: 1,
-    client: "Z nuly na 30 mil.",
-    description: "Za 3 roky díky sociálním sítím.",
+    client: "Z nuly na 27,5 tis. sledujících",
+    description: "Bez koruny do reklamy.",
     imageBefore: "/testimonials/celiso_pred.jpeg",
     imageAfter: "/testimonials/celiso_po.png",
     videoSrc: "/videos/testimonial-1.mp4",
@@ -45,15 +45,15 @@ const testimonials = [
   },
   {
     id: 2,
-    client: "Nárůst prodejů o 127%",
-    description: "Optimalizací webu a Instagram reklamou.",
+    client: "6 000 sledujících za 60 dní",
+    description: "30 objednávek za první týden spolupráce.",
     imageBefore: "/testimonials/vermione_pred.jpg",
-    imageAfter: "/testimonials/vermione_po.jpeg",
+    imageAfter: "/testimonials/vermione_po.png",
     videoSrc: "/videos/testimonial-2.mp4",
     company: "Vermione",
-    followers: "6 500",
-    posts: "402",
-    following: "108",
+    followers: "7 427",
+    posts: "51",
+    following: "109",
     highlight: "blue",
     bgGradient: "from-blue-500 to-cyan-600",
     bgLight: "from-blue-50 to-cyan-50",
@@ -61,14 +61,14 @@ const testimonials = [
   },
   {
     id: 3,
-    client: "27,3 tis. followerů",
-    description: "Růst organického dosahu o 345%",
+    client: "22 000 sledujících za 3 měsíce",
+    description: "Nárůst měsíčních tržeb o 150%",
     imageBefore: "/testimonials/mitolife_pred.jpeg",
     imageAfter: "/testimonials/mitolife_po.jpeg",
     videoSrc: "/videos/testimonial-3.mp4",
     company: "MitoLife",
     followers: "27,3 tis.",
-    posts: "38",
+    posts: "+150%",
     following: "67",
     highlight: "violet",
     bgGradient: "from-violet-500 to-purple-600",
@@ -181,7 +181,7 @@ const Testimonials = () => {
                     </svg>
                     {/* Right arrow for desktop */}
                     <svg
-                      className="w-4 h-4 text-white hidden lg:block"
+                      className="w-4 h-4 text-white hidden lg:block -rotate-90"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -224,7 +224,11 @@ const Testimonials = () => {
                   <div className="text-2xl font-black text-gray-900 mb-1">
                     {testimonial.posts}
                   </div>
-                  <div className="text-gray-600 text-xs">Příspěvků</div>
+                  {testimonial.id !== 3 ? (
+                    <div className="text-gray-600 text-xs">Příspěvků</div>
+                  ) : (
+                    <div className="text-gray-600 text-xs">Nárůst tržeb</div>
+                  )}
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-black text-gray-900 mb-1">

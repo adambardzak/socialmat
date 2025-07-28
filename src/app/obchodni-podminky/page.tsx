@@ -27,11 +27,15 @@ export default function TermsPage() {
     <main className="py-16 lg:py-24">
       <Container className="max-w-[78rem]">
         <div className="max-w-3xl mx-auto">
-          <h1
-            className={`${outfit.className} text-3xl md:text-4xl font-bold text-gray-900 mb-8`}
-          >
+          <h1 className={`${outfit.className} text-3xl md:text-4xl font-bold mb-6 text-gray-900`}>
             Obchodní podmínky
           </h1>
+          <div className={`${dmSans.className} text-base text-gray-700 mb-8`}>
+            společnosti BITTERLOVE s.r.o., IČO: 21977127, se sídlem Rybná 716/24, Staré Město, 110 00 Praha,<br />
+            Česká republika, zapsané v obchodním rejstříku vedeném Městským soudem v Praze,<br />
+            oddíl C, vložka [DOPLNIT] (dále jen “Poskytovatel”) a fyzických či právnických osob,<br />
+            které využívají služeb Poskytovatele (dále jen “Klient”). Socialmat je obchodní značka společnosti BITTERLOVE s.r.o.
+          </div>
 
           <div className={`${dmSans.className} prose prose-slate max-w-none`}>
             <p className="lead text-lg text-gray-700">
@@ -72,7 +76,7 @@ export default function TermsPage() {
               <li>identifikační údaje Klienta (jméno a příjmení/název, IČO, DIČ, adresa/sídlo)</li>
               <li>kontaktní údaje Klienta (telefonní číslo, e-mail)</li>
               <li>specifikaci požadovaných Služeb</li>
-              <li>cenu Služeb nebo odkaz na ceník Poskytovatele</li>
+              <li>cenu Služeb dle individuální dohody</li>
               <li>další relevantní informace potřebné pro poskytnutí Služeb</li>
             </ul>
             <p>
@@ -114,12 +118,12 @@ export default function TermsPage() {
               4. Cena a platební podmínky
             </h2>
             <p>
-              4.1 Cena za Služby je stanovena v ceníku Poskytovatele platném v době objednání 
+              4.1 Cena za Služby je vždy stanovena individuálně dle dohody mezi Poskytovatelem a Klientem. 
               Služeb nebo dohodou stran ve Smlouvě.
             </p>
             <p>
               4.2 Není-li ve Smlouvě uvedeno jinak, je Poskytovatel oprávněn požadovat zálohu 
-              ve výši až 50% celkové ceny před zahájením poskytování Služeb.
+              ve výši až 50% dohodnuté ceny před zahájením poskytování Služeb.
             </p>
             <p>
               4.3 Poskytovatel vystaví daňový doklad (fakturu) v souladu s platnými právními předpisy. 
@@ -305,12 +309,12 @@ export default function TermsPage() {
               Kontaktní údaje
             </h2>
             <p>
-              Socialmat s.r.o.<br />
-              IČO: 123 45 678<br />
-              DIČ: CZ12345678<br />
-              Sídlo: Havlíčkova 123, 120 00 Praha 2<br />
+              BITTERLOVE s.r.o.<br />
+              IČO: 21977127<br />
+              Sídlo: Rybná 716/24, Staré Město, 110 00 Praha<br />
               Email: <a href="mailto:info@socialmat.cz" className="text-indigo-600 hover:text-indigo-800 transition-colors">info@socialmat.cz</a><br />
               Telefon: +420 777 888 999<br />
+              Socialmat je obchodní značka společnosti BITTERLOVE s.r.o.<br />
             </p>
           </div>
         </div>

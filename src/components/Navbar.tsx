@@ -29,10 +29,14 @@ function Navbar() {
   const [logoAnimated, setLogoAnimated] = useState(false);
 
   useEffect(() => {
-    // Listen for logoToNavbar event from Hero
-    const handler = () => setLogoAnimated(true);
-    window.addEventListener("logoToNavbar", handler);
-    return () => window.removeEventListener("logoToNavbar", handler);
+    // Only animate logo on homepage
+    if (window.location.pathname === "/") {
+      const handler = () => setLogoAnimated(true);
+      window.addEventListener("logoToNavbar", handler);
+      return () => window.removeEventListener("logoToNavbar", handler);
+    } else {
+      setLogoAnimated(true);
+    }
   }, []);
 
   // Efekt pro detekci scrollování
@@ -86,7 +90,7 @@ function Navbar() {
             <ul className="hidden md:flex items-center space-x-8">
               <li>
                 <Link
-                  href="/instagram-audit"
+                  href="/ebook-zdarma"
                   className={`${dmSans.className} text-orange-600 hover:text-orange-700 font-bold transition-colors whitespace-nowrap`}
                 >
                   📚 ZDARMA E-book
@@ -126,7 +130,7 @@ function Navbar() {
               href="/#kontakt"
               className={`${outfit.className} px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-1px]`}
             >
-              Chci konzultaci zdarma
+              Chci konzultaci
             </Link>
           </div>
 
@@ -179,6 +183,15 @@ function Navbar() {
                 <ul className="flex flex-col space-y-4 px-4">
                   <li>
                     <Link
+                      href="/instagram-audit"
+                      className={`${dmSans.className} block text-orange-600 hover:text-orange-700 font-bold transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      📚 ZDARMA E-book
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/#process"
                       className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
                       onClick={() => setIsMobileMenuOpen(false)}
@@ -195,15 +208,7 @@ function Navbar() {
                       Reference
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/instagram-audit"
-                      className={`${dmSans.className} block text-orange-600 hover:text-orange-700 font-bold transition-colors`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      📚 ZDARMA E-book
-                    </Link>
-                  </li>
+
                   <li>
                     <Link
                       href="/#kontakt"
@@ -219,7 +224,7 @@ function Navbar() {
                       className={`${outfit.className} block w-full px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 text-center`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      Chci konzultaci zdarma
+                      Chci konzultaci
                     </Link>
                   </li>
                 </ul>

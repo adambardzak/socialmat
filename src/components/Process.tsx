@@ -148,7 +148,7 @@ const Process = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className={`${dmSans.className} text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-6`}
           >
-            Tři kroky, kterými vám pomůžeme vydělat peníze na Instagramu
+            3 kroky, kterými vám pomůžeme vydělat peníze na Instagramu
           </motion.p>
         </div>
 

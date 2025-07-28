@@ -210,9 +210,9 @@ const ContactForm = () => {
                 <div>
                   <h3 className={`${outfit.className} text-lg font-bold text-gray-900 mb-1`}>Adresa</h3>
                   <p className={`${dmSans.className} text-gray-600`}>
-                    Socialmat s.r.o.<br />
-                    Václavské náměstí 773/4<br />
-                    110 00 Praha 1
+                    Socialmat je značka společnosti BITTERLOVE s.r.o.<br />
+                    IČO: 21977127<br />
+                    Sídlo: Rybná 716/24, Staré Město, 110 00 Praha<br />
                   </p>
                 </div>
               </div>

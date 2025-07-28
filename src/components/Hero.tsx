@@ -93,7 +93,8 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className={`${outfit.className} text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 leading-tight tracking-tight`}
               >
-                Zvyšujeme prodeje e-shopům díky Instagramu a&nbsp;webu
+                {/* Zvyšujeme prodeje e-shopům díky Instagramu a&nbsp;webu */}
+                Proměňte svůj brand v automat na peníze
               </motion.h1>
 
               {/* Podnadpis */}
@@ -115,7 +116,7 @@ const Hero: React.FC = () => {
               >
                 {/* Primární CTA tlačítko - Lead magnet */}
                 <a
-                  href="/instagram-audit"
+                  href="/ebook-zdarma"
                   className={`${outfit.className} w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transform hover:translate-y-[-2px] text-center`}
                   aria-label="Stáhnout zdarma e-book o Instagramu"
                 >

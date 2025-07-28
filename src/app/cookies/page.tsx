@@ -18,9 +18,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Zásady používání cookies | Socialmat",
+  title: "Zásady používání cookies | Socialmat (BITTERLOVE s.r.o.)",
   description:
-    "Informace o tom, jak používáme cookies na našich webových stránkách",
+    "Informace o tom, jak používáme cookies na našich webových stránkách. Socialmat je značka společnosti BITTERLOVE s.r.o.",
 };
 
 export default function CookiesPage() {
@@ -217,15 +217,10 @@ export default function CookiesPage() {
               kontaktujte nás:
             </p>
             <p>
-              Email:{" "}
-              <a
-                href="mailto:info@socialmat.cz"
-                className="text-indigo-600 hover:text-indigo-800 transition-colors"
-              >
-                info@socialmat.cz
-              </a>
-              <br />
-              Telefon: +420 777 888 999
+              Email: <a href="mailto:info@socialmat.cz" className="text-indigo-600 hover:text-indigo-800 transition-colors">info@socialmat.cz</a><br />
+              Telefon: +420 777 888 999<br />
+              Adresa: Rybná 716/24, Staré Město, 110 00 Praha<br />
+              Socialmat je obchodní značka společnosti BITTERLOVE s.r.o.<br />
             </p>
           </div>
 
