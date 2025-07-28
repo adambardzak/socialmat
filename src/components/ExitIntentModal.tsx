@@ -26,48 +26,21 @@ interface ExitIntentModalProps {
   onEbookClaim?: () => void;
 }
 
-const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const ExitIntentModal: React.FC<ExitIntentModalProps> = ({
+  isOpen,
+  onClose,
+  onEbookClaim,
+}) => {
+  // Modal visibility is now controlled by parent (provider)
   const [hasShown, setHasShown] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    instagramHandle: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  useEffect(() => {
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-      }
-    };
-    const handleScroll = () => {
-      const scrollPercent =
-        (window.scrollY /
-          (document.documentElement.scrollHeight - window.innerHeight)) *
-        100;
-      if (scrollPercent > 70 && !hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-      }
-    };
-    const timeoutId = setTimeout(() => {
-      if (!hasShown) {
-        setIsVisible(true);
-        setHasShown(true);
-      }
-    }, 30000);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeoutId);
-    };
-  }, [hasShown]);
+  // Exit intent logic is now handled by provider/hook
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -79,11 +52,7 @@ const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.instagramHandle.trim()
-    ) {
+    if (!formData.name.trim() || !formData.email.trim()) {
       alert("Prosím vyplňte všechna pole");
       return;
     }
@@ -94,12 +63,9 @@ const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setIsSuccess(true);
       setTimeout(() => {
-        if (onEbookClaim) {
-          onEbookClaim();
-        } else {
-          window.location.href = "/lead-magnet";
-        }
-      }, 3000);
+        // Přesměrování na stránku s funnelem na správný step
+        window.location.href = "/ebook-zdarma?step=thank-you";
+      }, 2000);
     } catch (error) {
       console.error("Error saving exit intent lead:", error);
       alert("Došlo k chybě. Zkuste to prosím znovu.");
@@ -109,12 +75,12 @@ const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
   };
 
   const handleClose = () => {
-    setIsVisible(false);
+    if (typeof onClose === "function") onClose();
   };
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isOpen && (
         <>
           {/* Backdrop */}
           <motion.div
@@ -184,10 +150,9 @@ const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
                         peníze&quot;
                       </h3>
                       <ul className="text-left text-xs text-indigo-700 space-y-1">
-                        <li>✓ 5 způsobů monetizace Instagramu</li>
-                        <li>✓ Strategie rychlého růstu</li>
-                        <li>✓ Automatizace prodeje</li>
-                        <li>✓ Content strategie</li>
+                        <li>✓ Co Vám o algoritmu neřekli (a měli by)</li>
+                        <li>✓ Strategie, která přitahuje zákazníky</li>
+                        <li>✓ Organický prodej na autopilota</li>
                       </ul>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-orange-600 text-sm">
@@ -218,17 +183,6 @@ const ExitIntentModal: React.FC<ExitIntentModalProps> = ({ onEbookClaim }) => {
                         onChange={handleInputChange}
                         className={`${dmSans.className} w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-500 text-sm`}
                         placeholder="váš@email.cz"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="text"
-                        name="instagramHandle"
-                        value={formData.instagramHandle}
-                        onChange={handleInputChange}
-                        className={`${dmSans.className} w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-500 text-sm`}
-                        placeholder="@vasinstagram"
                         required
                       />
                     </div>

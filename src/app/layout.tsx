@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import ExitIntentProvider from "./ExitIntentProvider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -16,11 +17,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Socialmat | Růst e-shopů díky Instagramu a webu",
+  title: "Socialmat | Růst brandů díky Instagramu a webu",
   description:
-    "Pomáháme e-shopům zvýšit prodeje spojením síly sociálních sítí a konverzního webu. Garance výsledků nebo vracíme peníze.",
+    "Pomáháme brandům zvýšit prodeje spojením síly sociálních sítí a konverzního webu. Garance výsledků nebo vracíme peníze.",
   keywords:
-    "instagram marketing, sociální sítě, e-shop marketing, růst prodejů, web optimalizace",
+    "instagram marketing, sociální sítě, brand marketing, růst prodejů, web optimalizace",
 };
 
 export default function RootLayout({
@@ -32,7 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
         <Navbar />
-        {children}
+        <ExitIntentProvider>
+          {children}
+        </ExitIntentProvider>
         <Footer />
         <CookieConsent />
       </body>

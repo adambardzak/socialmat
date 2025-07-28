@@ -840,7 +840,22 @@ const MainOfferStep: React.FC = () => {
 
 // Hlavní komponenta trychtýře
 const LeadMagnetFunnel: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<FunnelStep>("lead-magnet");
+  // Načtení kroku z URL parametru
+  const getStepFromUrl = (): FunnelStep => {
+    if (typeof window === "undefined") return "lead-magnet";
+    const params = new URLSearchParams(window.location.search);
+    const step = params.get("step");
+    if (step === "thank-you" || step === "tripwire" || step === "main-offer") {
+      return step as FunnelStep;
+    }
+    return "lead-magnet";
+  };
+  const [currentStep, setCurrentStep] = useState<FunnelStep>(getStepFromUrl());
+  // Sync with URL param on mount
+  useEffect(() => {
+    const step = getStepFromUrl();
+    setCurrentStep(step);
+  }, []);
   const [formData, setFormData] = useState<LeadFormData>({
     name: "",
     email: "",
