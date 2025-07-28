@@ -151,25 +151,41 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className=""
             >
-              <h3 className={`${outfit.className} text-lg font-bold text-gray-900 mb-4`}>Web</h3>
+              <h3
+                className={`${outfit.className} text-lg font-bold text-gray-900 mb-4`}
+              >
+                Web
+              </h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/ebook-zdarma" className={`${dmSans.className} text-orange-600 hover:text-orange-700 font-bold transition-colors whitespace-nowrap`}>
+                  <Link
+                    href="/ebook-zdarma"
+                    className={`${dmSans.className} text-orange-600 hover:text-orange-700 font-bold transition-colors whitespace-nowrap`}
+                  >
                     📚 ZDARMA E-book
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#process" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                  <Link
+                    href="/#process"
+                    className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                  >
                     Služby
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#testimonials" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                  <Link
+                    href="/#testimonials"
+                    className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                  >
                     Reference
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#kontakt" className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}>
+                  <Link
+                    href="/#kontakt"
+                    className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                  >
                     Kontakt
                   </Link>
                 </li>

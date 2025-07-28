@@ -31,6 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Open Graph image for sharing */}
+        <meta property="og:image" content="/og-image.jpg" />
+      </head>
       <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
         <Navbar />
         <ExitIntentProvider>
