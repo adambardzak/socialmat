@@ -49,7 +49,7 @@ function Navbar() {
           backdrop-blur-md transition-all duration-300 rounded-xl w-full max-w-[78rem]`}
         size="sm"
       >
-        <div className="grid grid-cols-3 items-center w-full">
+        <div className="grid grid-cols-3 items-center w-full relative">
           {/* Logo */}
           <div className="flex justify-start">
             <Link
@@ -111,10 +111,10 @@ function Navbar() {
             </Link>
           </div>
 
-          {/* Mobilní hamburger menu - absolutní pozice vpravo */}
+          {/* Mobilní hamburger menu - absolutní pozice vpravo, vertikálně centrovaná */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden absolute top-4 right-4 flex flex-col items-center justify-center p-2"
+            className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-2"
             aria-label="Menu"
           >
             <span

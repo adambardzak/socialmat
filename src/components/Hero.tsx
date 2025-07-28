@@ -109,20 +109,20 @@ const Hero: React.FC = () => {
                   <div
                     className={`${outfit.className} text-2xl font-bold text-indigo-600 mb-1`}
                   >
-                    15 MILIONŮ
+                    150 %
                   </div>
                   <div className={`${dmSans.className} text-sm text-gray-600`}>
-                    ZHLÉDNUTÍ ORGANICKY
+                    NÁRŮST MĚSÍČNÍCH TRŽEB
                   </div>
                 </div>
                 <div className="text-center lg:text-left w-fit">
                   <div
                     className={`${outfit.className} text-2xl font-bold text-indigo-600 mb-1`}
                   >
-                    150 %
+                    15 MILIONŮ
                   </div>
                   <div className={`${dmSans.className} text-sm text-gray-600`}>
-                    NÁRŮST MĚSÍČNÍCH TRŽEB
+                    ZHLÉDNUTÍ ORGANICKY
                   </div>
                 </div>
               </div>
@@ -140,17 +140,31 @@ const Hero: React.FC = () => {
             />
           </div>
         </div>
-        
-        {/* DOČASNÝ TEST BUTTON PRO EXIT-INTENT */}
-        <div className="fixed bottom-4 right-4 z-50">
+
+        {/* DOČASNÉ TEST BUTTONY PRO EXIT-INTENT */}
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
           <button
             onClick={() => {
-              localStorage.removeItem('hasSeenExitIntent');
+              localStorage.removeItem("hasSeenExitIntent");
               window.location.reload();
             }}
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm shadow-lg"
           >
-            🔄 Reset Exit Intent
+            🔄 Reset & Reload
+          </button>
+          <button
+            onClick={() => {
+              console.log("🧪 Manual exit intent trigger");
+              // Trigger mouseleave event
+              const event = new MouseEvent("mouseleave", {
+                clientY: 5,
+                bubbles: true,
+              });
+              document.dispatchEvent(event);
+            }}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm shadow-lg"
+          >
+            🧪 Test Exit Intent
           </button>
         </div>
       </div>

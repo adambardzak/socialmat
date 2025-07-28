@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
-import ExitIntentProvider from "@/components/ExitIntentProvider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -31,15 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${dmSans.variable} ${outfit.variable} antialiased`}
-      >
-        <ExitIntentProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <CookieConsent />
-        </ExitIntentProvider>
+      <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
+        <Navbar />
+        {children}
+        <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

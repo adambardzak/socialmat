@@ -167,15 +167,16 @@ const Process = () => {
               className="relative mb-16 last:mb-0"
             >
               {/* Step indicator */}
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 relative">
-                  <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg ${
+              <div className="flex flex-col lg:flex-row items-start gap-6">
+                {/* Step number */}
+                <div className="flex-shrink-0 relative flex justify-center lg:block mb-4 lg:mb-0">
+                  <div className={`w-20 h-20 lg:w-24 lg:h-24 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg ${
                     service.id === 1 
                       ? "bg-gradient-to-br from-pink-500 to-rose-500" 
                       : service.id === 2 
                       ? "bg-gradient-to-br from-blue-500 to-indigo-500" 
                       : "bg-gradient-to-br from-green-500 to-emerald-500"
-                  } ${outfit.className}`}>
+                  } ${outfit.className}`}> 
                     {service.id}
                   </div>
                   {/* Pulse effect */}
@@ -190,12 +191,12 @@ const Process = () => {
 
                 {/* Content */}
                 <div className="flex-1">
-                  <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 lg:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
                     <div className="mb-6">
-                      <h3 className={`${outfit.className} text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight`}>
+                      <h3 className={`${outfit.className} text-xl lg:text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight`}>
                         {service.title}
                       </h3>
-                      <p className={`${dmSans.className} text-gray-600 text-lg leading-relaxed`}>
+                      <p className={`${dmSans.className} text-gray-600 text-base lg:text-lg leading-relaxed`}>
                         {service.description}
                       </p>
                     </div>

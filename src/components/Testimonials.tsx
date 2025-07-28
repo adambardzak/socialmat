@@ -145,27 +145,29 @@ const Testimonials = () => {
                 </p>
               </div>
 
-              {/* Images - OBROVSKÉ A ČITELNÉ */}
+              {/* Images - Responsive and arrow direction */}
               <div className="flex flex-col lg:flex-row gap-6 items-center justify-center mb-8">
-                <div className="relative group">
+                <div className="relative group w-full max-w-xs sm:max-w-md lg:w-[500px] h-auto">
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
                     PŘED
                   </div>
-                  <div className="w-[500px] h-fit rounded-2xl overflow-hidden bg-gray-50">
+                  <div className="w-full h-auto rounded-2xl overflow-hidden bg-gray-50">
                     <img
                       src={testimonial.imageBefore}
                       alt={`${testimonial.company} před`}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </div>
 
-                <div className="flex-shrink-0">
+                {/* Arrow: process style, right on desktop, down on mobile */}
+                <div className="flex-shrink-0 flex items-center justify-center">
                   <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${testimonial.bgGradient} shadow-lg`}
+                    className={`w-8 h-8 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-gradient-to-r from-indigo-600 to-blue-500 shadow-lg`}
                   >
+                    {/* Down arrow for mobile */}
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-4 h-4 text-white block lg:hidden"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -174,21 +176,35 @@ const Testimonials = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
+                    </svg>
+                    {/* Right arrow for desktop */}
+                    <svg
+                      className="w-4 h-4 text-white hidden lg:block"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
                       />
                     </svg>
                   </div>
                 </div>
 
-                <div className="relative group">
+                <div className="relative group w-full max-w-xs sm:max-w-md lg:w-[500px] h-auto">
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
                     PO
                   </div>
-                  <div className="w-[500px] h-fit rounded-2xl overflow-hidden bg-gray-50">
+                  <div className="w-full h-auto rounded-2xl overflow-hidden bg-gray-50">
                     <img
                       src={testimonial.imageAfter}
                       alt={`${testimonial.company} po`}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </div>
