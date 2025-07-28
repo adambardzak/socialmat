@@ -47,7 +47,7 @@ function Navbar() {
           isScrolled && !isMobileMenuOpen
             ? "bg-white/95 shadow-lg py-3 rounded-xl"
             : "bg-transparent shadow-none py-5",
-          isMobileMenuOpen && "bg-white/95 rounded-t-xl shadow-lg py-3",
+          isMobileMenuOpen && "bg-white rounded-t-xl py-3",
           "backdrop-blur-md transition-all duration-300  w-full max-w-[78rem]"
         )}
         size="sm"
@@ -157,7 +157,7 @@ function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="md:hidden py-3  border-gray-100 z-50 fixed top-full left-0 right-0 bg-white rounded-b-xl"
+                className="md:hidden py-3  border-gray-100 z-50 fixed top-full left-0 right-0 bg-white rounded-b-xl shadow-lg"
                 style={{ top: "100%" }}
               >
                 <ul className="flex flex-col space-y-4 px-4">
