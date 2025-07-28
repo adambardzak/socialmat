@@ -1,24 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import ExitIntentProvider from "@/components/ExitIntentProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Socialmat | Růst e-shopů díky Instagramu a webu",
-  description: "Pomáháme e-shopům zvýšit prodeje spojením síly sociálních sítí a konverzního webu. Garance výsledků nebo vracíme peníze.",
-  keywords: "instagram marketing, sociální sítě, e-shop marketing, růst prodejů, web optimalizace",
+  description:
+    "Pomáháme e-shopům zvýšit prodeje spojením síly sociálních sítí a konverzního webu. Garance výsledků nebo vracíme peníze.",
+  keywords:
+    "instagram marketing, sociální sítě, e-shop marketing, růst prodejů, web optimalizace",
 };
 
 export default function RootLayout({
@@ -29,12 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dmSans.variable} ${outfit.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <CookieConsent />
+        <ExitIntentProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <CookieConsent />
+        </ExitIntentProvider>
       </body>
     </html>
   );

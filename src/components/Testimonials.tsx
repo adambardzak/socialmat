@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useState } from "react";
 import Image from "next/image";
 import { DM_Sans, Outfit } from "next/font/google";
 import { motion } from "framer-motion";
@@ -21,6 +20,11 @@ const outfit = Outfit({
   display: "swap",
 });
 
+// Register GSAP plugins - REMOVED for carousel
+// if (typeof window !== "undefined") {
+//   gsap.registerPlugin(ScrollTrigger);
+// }
+
 // Data pro testimonials a ukázky
 const testimonials = [
   {
@@ -29,12 +33,15 @@ const testimonials = [
     description: "Za 3 roky díky sociálním sítím.",
     imageBefore: "/testimonials/celiso_pred.jpeg",
     imageAfter: "/testimonials/celiso_po.png",
-    videoSrc: "/videos/testimonial-1.mp4", // Nahraďte skutečnou cestou k videu
+    videoSrc: "/videos/testimonial-1.mp4",
     company: "Celiso",
     followers: "27,5 tis.",
     posts: "101",
     following: "55",
     highlight: "indigo",
+    bgGradient: "from-indigo-500 to-purple-600",
+    bgLight: "from-indigo-50 to-purple-50",
+    textColor: "text-indigo-600",
   },
   {
     id: 2,
@@ -42,12 +49,15 @@ const testimonials = [
     description: "Optimalizací webu a Instagram reklamou.",
     imageBefore: "/testimonials/vermione_pred.jpg",
     imageAfter: "/testimonials/vermione_po.jpeg",
-    videoSrc: "/videos/testimonial-2.mp4", // Nahraďte skutečnou cestou k videu
+    videoSrc: "/videos/testimonial-2.mp4",
     company: "Vermione",
     followers: "6 500",
     posts: "402",
     following: "108",
     highlight: "blue",
+    bgGradient: "from-blue-500 to-cyan-600",
+    bgLight: "from-blue-50 to-cyan-50",
+    textColor: "text-blue-600",
   },
   {
     id: 3,
@@ -55,249 +65,187 @@ const testimonials = [
     description: "Růst organického dosahu o 345%",
     imageBefore: "/testimonials/mitolife_pred.jpeg",
     imageAfter: "/testimonials/mitolife_po.jpeg",
-    videoSrc: "/videos/testimonial-3.mp4", // Nahraďte skutečnou cestou k videu
+    videoSrc: "/videos/testimonial-3.mp4",
     company: "MitoLife",
     followers: "27,3 tis.",
     posts: "38",
     following: "67",
     highlight: "violet",
+    bgGradient: "from-violet-500 to-purple-600",
+    bgLight: "from-violet-50 to-purple-50",
+    textColor: "text-violet-600",
   },
 ];
 
 const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  const handleTestimonialChange = (index: number) => {
-    setActiveIndex(index);
-
-    // Zastaví všechna videa
-    videoRefs.current.forEach((video, i) => {
-      if (video) {
-        if (i === index) {
-          video.currentTime = 0;
-          video
-            .play()
-            .catch((e) => console.log("Video přehrávání bylo zablokováno:", e));
-        } else {
-          video.pause();
-        }
-      }
-    });
-  };
-
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <Container className="max-w-[78rem]">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className={`${outfit.className} text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500 mb-4`}
-          >
-            Ukázky naší práce
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={`${dmSans.className} text-lg text-gray-600 max-w-3xl mx-auto`}
-          >
-            Prokazatelné výsledky, které měníme v růst vašeho podnikání.
-          </motion.p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Levá část - Showcase panel s Before/After */}
+    <section id="testimonials" className="relative bg-white py-24">
+      <Container className="max-w-7xl">
+        {/* Header */}
+        <div className="text-center mb-12">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative aspect-[4/5] md:aspect-[9/16] lg:aspect-[3/4] rounded-2xl overflow-hidden shadow-xl"
           >
-            {testimonials.map((item, idx) => (
-              <div
-                key={item.id}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  idx === activeIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
-              >
-                {/* Before/After obrázky profilu Instagram */}
-                <div className="relative w-full h-full bg-gray-900 overflow-hidden rounded-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+            <h2
+              className={`${outfit.className} text-4xl md:text-5xl font-black text-gray-900 mb-3`}
+            >
+              Naše výsledky
+            </h2>
+            <p
+              className={`${dmSans.className} text-lg text-gray-600 max-w-2xl mx-auto`}
+            >
+              Reálné case studies našich klientů
+            </p>
+          </motion.div>
+        </div>
 
-                  {/* Horní polovina - Before */}
-                  <div className="absolute top-0 left-0 right-0 h-1/2 p-2">
-                    <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-white/20">
-                      <Image
-                        src={
-                          item.imageBefore || "/images/default-testimonial.jpg"
-                        }
-                        alt={`${item.client} před`}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute top-2 left-2 bg-black/60 text-white text-xs py-1 px-2 rounded font-bold">
-                        PŘED
-                      </div>
-                    </div>
+        {/* Testimonials */}
+        <div className="space-y-12">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="relative"
+            >
+              {/* Company Info */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg bg-gradient-to-br ${testimonial.bgGradient}`}
+                  >
+                    {testimonial.company.charAt(0)}
                   </div>
-
-                  {/* Dolní polovina - After */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1/2 p-2">
-                    <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-white/20">
-                      <Image
-                        src={
-                          item.imageAfter || "/images/default-testimonial.jpg"
-                        }
-                        alt={`${item.client} po`}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute top-2 right-2 bg-gradient-to-r from-indigo-600 to-blue-500 text-white text-xs py-1 px-2 rounded font-bold">
-                        PO
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Instagram profil info */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-black/80 backdrop-blur-md rounded-xl px-8 py-4 border border-white/10 shadow-2xl">
-                    <div className="flex items-center justify-center mb-2">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 mr-2 flex items-center justify-center overflow-hidden">
-                        <div className="text-sm font-bold text-white">
-                          {item.company.charAt(0)}
-                        </div>
-                      </div>
-                      <span
-                        className={`${dmSans.className} text-base font-medium text-white`}
-                      >
-                        {item.company}
-                      </span>
-                    </div>
-
-                    {/* Instagram statistiky */}
-                    <div className="grid grid-cols-3 gap-3 text-center">
-                      <div>
-                        <p className="text-white font-bold">{item.posts}</p>
-                        <p className="text-gray-400 text-xs">příspěvky</p>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold">{item.followers}</p>
-                        <p className="text-gray-400 text-xs">sledující</p>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold">{item.following}</p>
-                        <p className="text-gray-400 text-xs">sleduje</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Texty vespod */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white">
+                  <div className="text-left">
                     <h3
-                      className={`${outfit.className} text-2xl md:text-3xl font-bold mb-2 text-center bg-black/50 backdrop-blur-sm py-2 rounded-t-lg`}
+                      className={`${outfit.className} text-2xl font-bold text-gray-900`}
                     >
-                      {item.client}
+                      {testimonial.company}
                     </h3>
-                    <p
-                      className={`${dmSans.className} text-base text-gray-200 bg-black/50 backdrop-blur-sm py-2 px-4 rounded-b-lg text-center`}
-                    >
-                      {item.description}
+                    <p className={`${dmSans.className} text-gray-600 text-sm`}>
+                      E-commerce • Instagram Marketing
                     </p>
+                  </div>
+                </div>
+
+                <h4
+                  className={`${outfit.className} text-3xl md:text-4xl font-black mb-3 bg-gradient-to-r ${testimonial.bgGradient} bg-clip-text text-transparent`}
+                >
+                  {testimonial.client}
+                </h4>
+                <p
+                  className={`${dmSans.className} text-lg text-gray-700 max-w-3xl mx-auto`}
+                >
+                  {testimonial.description}
+                </p>
+              </div>
+
+              {/* Images - OBROVSKÉ A ČITELNÉ */}
+              <div className="flex flex-col lg:flex-row gap-6 items-center justify-center mb-8">
+                <div className="relative group">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
+                    PŘED
+                  </div>
+                  <div className="w-[500px] h-fit rounded-2xl overflow-hidden bg-gray-50">
+                    <img
+                      src={testimonial.imageBefore}
+                      alt={`${testimonial.company} před`}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${testimonial.bgGradient} shadow-lg`}
+                  >
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
+                    PO
+                  </div>
+                  <div className="w-[500px] h-fit rounded-2xl overflow-hidden bg-gray-50">
+                    <img
+                      src={testimonial.imageAfter}
+                      alt={`${testimonial.company} po`}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                 </div>
               </div>
-            ))}
 
-            {/* Navigační tečky */}
-            <div className="absolute bottom-4 right-4 z-20 flex space-x-2">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleTestimonialChange(idx)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    idx === activeIndex
-                      ? "bg-white scale-100"
-                      : "bg-white/40 scale-75 hover:bg-white/60"
-                  }`}
-                  aria-label={`Zobrazit testimonial ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Pravá část - Seznam dalších testimonialů */}
-          <div className="space-y-6">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className={`${outfit.className} text-2xl font-bold text-gray-900 mb-6`}
-            >
-              Výsledky, které přinášíme našim klientům
-            </motion.h3>
-
-            {testimonials.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                onClick={() => handleTestimonialChange(idx)}
-                className={`p-6 rounded-xl cursor-pointer transition-all duration-300 ${
-                  idx === activeIndex
-                    ? "bg-white shadow-lg border-l-4 border-indigo-500"
-                    : "hover:bg-white/50 border-l-4 border-transparent"
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 relative bg-gray-100">
-                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        {item.company.charAt(0)}
-                      </span>
-                    </div>
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 max-w-xl mx-auto">
+                <div className="text-center">
+                  <div
+                    className={`text-2xl font-black ${testimonial.textColor} mb-1`}
+                  >
+                    {testimonial.followers}
                   </div>
-
-                  <div>
-                    <h4
-                      className={`${outfit.className} text-lg font-bold text-gray-900`}
-                    >
-                      {item.client}
-                    </h4>
-                    <p className={`${dmSans.className} text-gray-600 mb-1`}>
-                      {item.description}
-                    </p>
-                    <p className={`${dmSans.className} text-sm text-gray-500`}>
-                      <span className="font-medium">{item.company}</span> ·{" "}
-                      {item.followers} sledujících
-                    </p>
-                  </div>
+                  <div className="text-gray-600 text-xs">Sledujících</div>
                 </div>
-              </motion.div>
-            ))}
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-900 mb-1">
+                    {testimonial.posts}
+                  </div>
+                  <div className="text-gray-600 text-xs">Příspěvků</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-900 mb-1">
+                    {testimonial.following}
+                  </div>
+                  <div className="text-gray-600 text-xs">Sleduje</div>
+                </div>
+              </div>
 
-            {/* CTA tlačítko */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-8 pt-4"
-            >
-              <button
-                className={`${outfit.className} w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300`}
-              >
-                Chci podobné výsledky
-              </button>
+              {/* Success Badge */}
+              <div className="flex justify-center mt-6">
+                <div
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${testimonial.bgGradient} text-white font-bold text-sm`}
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                    />
+                  </svg>
+                  Úspěšná transformace
+                </div>
+              </div>
+
+              {/* Divider */}
+              {index < testimonials.length - 1 && (
+                <div className="w-full h-px bg-gray-200 mt-12"></div>
+              )}
             </motion.div>
-          </div>
+          ))}
         </div>
       </Container>
     </section>

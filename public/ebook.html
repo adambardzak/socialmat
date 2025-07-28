@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proměňte svůj Instagram v automat na peníze | E-book</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .font-dm-sans { font-family: 'DM Sans', sans-serif; }
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+        @page { margin: 2cm; }
+        @media print {
+            .no-print { display: none !important; }
+            body { font-size: 12pt; line-height: 1.4; }
+        }
+    </style>
+    <script>
+        // Analytics tracking
+        function trackEbookEvent(action) {
+            if (typeof fetch !== 'undefined') {
+                fetch('/api/ebook-analytics', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: action,
+                        userAgent: navigator.userAgent,
+                        timestamp: new Date().toISOString()
+                    })
+                }).catch(console.error);
+            }
+        }
+
+        // Track page view
+        document.addEventListener('DOMContentLoaded', function() {
+            trackEbookEvent('view');
+        });
+
+        // Track print
+        window.addEventListener('beforeprint', function() {
+            trackEbookEvent('print');
+        });
+
+        // Track scroll depth
+        let maxScrollDepth = 0;
+        window.addEventListener('scroll', function() {
+            const scrollDepth = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+            if (scrollDepth > maxScrollDepth) {
+                maxScrollDepth = scrollDepth;
+                if (scrollDepth >= 25 && scrollDepth < 50) {
+                    trackEbookEvent('scroll_25');
+                } else if (scrollDepth >= 50 && scrollDepth < 75) {
+                    trackEbookEvent('scroll_50');
+                } else if (scrollDepth >= 75 && scrollDepth < 90) {
+                    trackEbookEvent('scroll_75');
+                } else if (scrollDepth >= 90) {
+                    trackEbookEvent('scroll_complete');
+                }
+            }
+        });
+    </script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 font-dm-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm no-print">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="font-outfit text-2xl font-bold text-gray-900">Socialmat</h1>
+                <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                    📄 Stáhnout PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Title Page -->
+        <div class="bg-white rounded-2xl shadow-xl p-12 mb-12 text-center">
+            <div class="inline-block p-4 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-2xl mb-6">
+                <svg class="w-16 h-16 text-indigo-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            
+            <h1 class="font-outfit text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Proměňte svůj</span><br>
+                Instagram v<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">automat na peníze</span>
+            </h1>
+            
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                Kompletní průvodce jak generovat stabilní příjem z Instagramu
+            </p>
+            
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-6 border border-indigo-100">
+                <p class="font-outfit font-bold text-indigo-800 text-lg mb-2">Hodnota: 1.500 Kč</p>
+                <p class="text-indigo-600">Verze 1.0 | 2025 | Socialmat.cz</p>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <h2 class="font-outfit text-3xl font-bold text-gray-900 mb-8 text-center">📋 Obsah</h2>
+            <div class="space-y-3">
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                    <span class="text-gray-700">Úvod - Proč Instagram funguje jako automat na peníze</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                    <span class="text-gray-700">5 způsobů monetizace Instagramu</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                    <span class="text-gray-700">Strategie rychlého růstu</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                    <span class="text-gray-700">Automatizace prodeje</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                    <span class="text-gray-700">Content strategie</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">6</span>
+                    <span class="text-gray-700">Praktické kroky k implementaci</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">7</span>
+                    <span class="text-gray-700">Časté chyby a jak se jim vyhnout</span>
+                </div>
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">8</span>
+                    <span class="text-gray-700">Závěr a další kroky</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 1: Úvod -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">1</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Úvod - Proč Instagram funguje jako automat na peníze</h2>
+            </div>
+            
+            <p class="text-gray-700 mb-6 leading-relaxed">
+                Instagram není jen sociální síť - je to <strong>nejsilnější prodejní platforma</strong> 21. století. S více než 2 miliardami aktivních uživatelů měsíčně představuje obrovskou příležitost pro každého, kdo chce začít vydělávat online.
+            </p>
+
+            <h3 class="font-outfit text-xl font-bold text-gray-900 mb-4">🎯 Proč právě Instagram?</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-green-600 font-bold">✅</div>
+                    <div>
+                        <div class="font-semibold text-green-800">Vysoká engagement rate</div>
+                        <div class="text-green-700 text-sm">Lidé zde aktivně interagují</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-green-600 font-bold">✅</div>
+                    <div>
+                        <div class="font-semibold text-green-800">Vizuální obsah</div>
+                        <div class="text-green-700 text-sm">Perfektní pro prezentaci produktů</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-green-600 font-bold">✅</div>
+                    <div>
+                        <div class="font-semibold text-green-800">Integrované nákupní funkce</div>
+                        <div class="text-green-700 text-sm">Jednoduché nakupování</div>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-green-600 font-bold">✅</div>
+                    <div>
+                        <div class="font-semibold text-green-800">Cílené reklamy</div>
+                        <div class="text-green-700 text-sm">Přesné zacílení na ideální zákazníky</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                <h3 class="font-outfit text-lg font-bold text-blue-800 mb-3">🎁 Co se naučíte v tomto e-booku</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span class="text-blue-700"><strong>5 konkrétních způsobů</strong>, jak začít vydělávat už za 30 dní</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span class="text-blue-700"><strong>Kompletní strategii růstu</strong> pro získání tisíců followerů</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span class="text-blue-700"><strong>Automatizované systémy</strong>, které prodávají 24/7</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span class="text-blue-700"><strong>Content plán</strong>, který generuje engagement i prodeje</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 2: 5 způsobů monetizace -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">2</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">5 způsobů monetizace Instagramu</h2>
+            </div>
+
+            <!-- Affiliate Marketing -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    💰 1. Affiliate Marketing
+                </h3>
+                <p class="text-gray-700 mb-4">
+                    <strong>Co to je:</strong> Propagujete cizí produkty a dostáváte provizi z každého prodeje.
+                </p>
+                
+                <div class="bg-gray-50 rounded-lg p-6 mb-4">
+                    <h4 class="font-semibold text-gray-900 mb-3">🚀 Jak začít:</h4>
+                    <ol class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
+                            Zaregistrujte se do affiliate programů (Amazon, Alza, CZC)
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
+                            Vyberte produkty relevantní pro vaši niche
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
+                            Vytvářejte autentické recenze a doporučení
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-indigo-100 text-indigo-600 w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</span>
+                            Používejte affiliate linky ve Stories a bio
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                    <h4 class="font-semibold text-green-800 mb-2">📈 Příklad úspěchu:</h4>
+                    <p class="text-green-700 text-sm">
+                        Fitness influencerka začala s 500 followery, po 6 měsících vydělávala <strong>15.000 Kč měsíčně</strong> jen z affiliate marketingu sportovní výživy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Digital Products -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    📚 2. Vlastní digitální produkty
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">💡 Co vytvořit:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                E-booky a průvodce
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                Online kurzy
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                Šablony a presets
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                Konzultace a koučink
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">💰 Cenové rozmezí:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex justify-between">
+                                <span>E-book:</span>
+                                <span class="font-semibold">297-997 Kč</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Online kurz:</span>
+                                <span class="font-semibold">1.997-9.997 Kč</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Konzultace:</span>
+                                <span class="font-semibold">1.000-5.000 Kč/hod</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physical Products -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    📦 3. Fyzické produkty
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">🛍️ Možnosti:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Print on demand (trička, hrníčky)</li>
+                            <li>• Handmade produkty</li>
+                            <li>• Private label produkty</li>
+                            <li>• Dropshipping</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">🛒 Instagram Shopping setup:</h4>
+                        <ol class="space-y-1 text-gray-700 text-sm">
+                            <li>1. Přepněte na business účet</li>
+                            <li>2. Připojte katalog produktů</li>
+                            <li>3. Označujte produkty v příspěvcích</li>
+                            <li>4. Používejte Shopping Stories</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    🎯 4. Služby a freelancing
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">💼 Typy služeb:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Grafický design</li>
+                            <li>• Copywriting</li>
+                            <li>• Social media management</li>
+                            <li>• Fotografování</li>
+                            <li>• Koučink a konzultace</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-3">📢 Jak získat klienty:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Ukažte portfolio v Highlights</li>
+                            <li>• Sdílejte před/po transformace</li>
+                            <li>• Používejte testimonials</li>
+                            <li>• Nabízejte mini konzultace zdarma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsored Posts -->
+            <div class="mb-6">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    🤝 5. Sponzorované příspěvky
+                </h3>
+                
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-3">💰 Cenová kalkulace:</h4>
+                    <div class="space-y-2 text-blue-700">
+                        <div class="flex justify-between">
+                            <span>Micro influencer (1K-10K):</span>
+                            <span class="font-semibold">100-500 Kč/post</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Mid tier (10K-100K):</span>
+                            <span class="font-semibold">500-2.000 Kč/post</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Macro (100K+):</span>
+                            <span class="font-semibold">2.000+ Kč/post</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 3: Strategie růstu -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">3</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Strategie rychlého růstu</h2>
+            </div>
+
+            <!-- Bio Optimization -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">📝 Optimalizace profilu</h3>
+                
+                <div class="bg-gray-50 rounded-lg p-6 mb-4">
+                    <h4 class="font-semibold text-gray-900 mb-3">Bio formula:</h4>
+                    <div class="bg-white rounded border-2 border-dashed border-gray-300 p-4 font-mono text-sm">
+                        <div>[Co děláte] | [Pro koho]</div>
+                        <div>[Hlavní benefit/transformace]</div>
+                        <div>[Social proof/čísla]</div>
+                        <div>[CTA + link]</div>
+                    </div>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-green-800 mb-2">✨ Příklad:</h4>
+                    <div class="bg-white rounded p-3 text-sm">
+                        <div>Instagram Marketing | Pro e-shopy 📈</div>
+                        <div>Pomáhám zvýšit prodeje o 150% za 90 dní</div>
+                        <div>✅ 50+ úspěšných klientů</div>
+                        <div>👇 ZDARMA audit vašeho Instagramu</div>
+                        <div class="text-blue-600">linktr.ee/vaslink</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hashtag Strategy -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4"># Hashtag strategie</h3>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                        <div class="text-red-600 font-bold text-2xl">30%</div>
+                        <div class="text-red-800 font-semibold">Velké hashtags</div>
+                        <div class="text-red-600 text-sm">(1M+ příspěvků)</div>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
+                        <div class="text-yellow-600 font-bold text-2xl">50%</div>
+                        <div class="text-yellow-800 font-semibold">Střední hashtags</div>
+                        <div class="text-yellow-600 text-sm">(100K-1M)</div>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                        <div class="text-green-600 font-bold text-2xl">20%</div>
+                        <div class="text-green-800 font-semibold">Malé hashtags</div>
+                        <div class="text-green-600 text-sm">(do 100K)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Pillars -->
+            <div class="mb-6">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">🏛️ Content pillars (70-20-10 pravidlo)</h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-blue-800 mb-2">70% Vzdělávací obsah:</h4>
+                        <div class="text-blue-700 text-sm">Tipy a triky • Návody krok za krokem • Behind the scenes • Industry insights</div>
+                    </div>
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-purple-800 mb-2">20% Inspirační obsah:</h4>
+                        <div class="text-purple-700 text-sm">Osobní příběhy • Motivační citáty • Success stories • Transformace</div>
+                    </div>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-orange-800 mb-2">10% Prodejní obsah:</h4>
+                        <div class="text-orange-700 text-sm">Produktové příspěvky • Testimonials • Speciální nabídky • Call-to-action</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 4: Automatizace -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">4</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Automatizace prodeje</h2>
+            </div>
+
+            <!-- Sales Funnel -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">🎯 Sales funnel setup</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <div class="font-semibold text-green-800">Top of funnel (Awareness)</div>
+                            <div class="text-green-700 text-sm">Organický obsah • Hashtags • Collaborations • Reklamy</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="bg-yellow-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <div class="font-semibold text-yellow-800">Middle of funnel (Consideration)</div>
+                            <div class="text-yellow-700 text-sm">Lead magnet • Email sequence • Webináře • Free trials</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <div class="font-semibold text-red-800">Bottom of funnel (Conversion)</div>
+                            <div class="text-red-700 text-sm">Prodejní stránky • Time-limited offers • Testimonials • Záruka</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Automation -->
+            <div class="mb-6">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">📧 Email marketing automatizace</h3>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-4">Welcome sequence (7 emailů):</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 p-3 bg-white rounded border">
+                            <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                            <div>
+                                <div class="font-medium">Email 1 (Okamžitě)</div>
+                                <div class="text-gray-600 text-sm">Doručení lead magnetu</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded border">
+                            <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                            <div>
+                                <div class="font-medium">Email 2 (Den 2)</div>
+                                <div class="text-gray-600 text-sm">Váš příběh + hodnota</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded border">
+                            <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                            <div>
+                                <div class="font-medium">Email 3 (Den 4)</div>
+                                <div class="text-gray-600 text-sm">Case study úspěchu</div>
+                            </div>
+                        </div>
+                        <div class="text-center text-gray-500 text-sm">... a další 4 emaily</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 5: Content strategie -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">5</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Content strategie</h2>
+            </div>
+
+            <!-- High Converting Post Types -->
+            <div class="mb-8">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">🚀 Typy příspěvků s nejvyšší konverzí</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">📊 Before/After transformace</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Vizuální důkaz výsledků</li>
+                            <li>• Příběh transformace</li>
+                            <li>• Konkrétní metriky</li>
+                            <li>• CTA pro konzultaci</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">📚 Educational carousels</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• 5-10 slajdů s tipy</li>
+                            <li>• Actionable content</li>
+                            <li>• Ukládání a sdílení</li>
+                            <li>• Lead magnet v komentářích</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">🎬 Behind the scenes</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Budování důvěry</li>
+                            <li>• Lidská stránka značky</li>
+                            <li>• Pracovní proces</li>
+                            <li>• Team stories</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">👥 User-generated content</h4>
+                        <ul class="text-gray-700 text-sm space-y-1">
+                            <li>• Zákaznické recenze</li>
+                            <li>• Unboxing videa</li>
+                            <li>• Testimonials</li>
+                            <li>• Case studies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caption Formula -->
+            <div class="mb-6">
+                <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-4">✍️ Caption formula pro prodej</h3>
+                
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                    <h4 class="font-semibold text-blue-800 mb-4">AIDA struktura:</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="font-semibold text-blue-900">A - Attention (Hook):</div>
+                            <div class="text-blue-700 text-sm italic">"3 chyby které vás stojí tisíce" • "Proč 90% lidí nikdy nevydělá na Instagramu"</div>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-blue-900">I - Interest (Story/Problem):</div>
+                            <div class="text-blue-700 text-sm italic">Relatable problém • Osobní příběh • Industry insight</div>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-blue-900">D - Desire (Solution/Benefit):</div>
+                            <div class="text-blue-700 text-sm italic">Jak vyřešit problém • Konkrétní benefity • Social proof</div>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-blue-900">A - Action (CTA):</div>
+                            <div class="text-blue-700 text-sm italic">"Komentujte 'CHCI' pro link" • "DM pro více info"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 6: 30-denní plán -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">6</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">30-denní akční plán</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Week 1 -->
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h3 class="font-outfit font-bold text-green-800 mb-3">Týden 1: Foundation</h3>
+                    <div class="space-y-2 text-green-700 text-sm">
+                        <div><strong>Den 1-2:</strong> Optimalizace profilu</div>
+                        <div><strong>Den 3-5:</strong> Content audit</div>
+                        <div><strong>Den 6-7:</strong> Strategy setup</div>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h3 class="font-outfit font-bold text-blue-800 mb-3">Týden 2: Content</h3>
+                    <div class="space-y-2 text-blue-700 text-sm">
+                        <div><strong>Den 8-10:</strong> Batch content tvorba</div>
+                        <div><strong>Den 11-14:</strong> Engagement fokus</div>
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                    <h3 class="font-outfit font-bold text-purple-800 mb-3">Týden 3: Monetizace</h3>
+                    <div class="space-y-2 text-purple-700 text-sm">
+                        <div><strong>Den 15-17:</strong> Lead magnet tvorba</div>
+                        <div><strong>Den 18-21:</strong> Sales funnel setup</div>
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <h3 class="font-outfit font-bold text-orange-800 mb-3">Týden 4: Optimalizace</h3>
+                    <div class="space-y-2 text-orange-700 text-sm">
+                        <div><strong>Den 22-24:</strong> Analytics review</div>
+                        <div><strong>Den 25-28:</strong> Strategy adjustment</div>
+                        <div><strong>Den 29-30:</strong> Scale up</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="mt-8">
+                <h3 class="font-outfit text-xl font-bold text-gray-900 mb-4">🛠️ Doporučené nástroje</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Content creation:</h4>
+                        <ul class="space-y-1 text-gray-700 text-sm">
+                            <li>• Canva (grafika)</li>
+                            <li>• InShot (video editing)</li>
+                            <li>• Lightroom (foto úpravy)</li>
+                            <li>• Later (scheduling)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Analytics & automatizace:</h4>
+                        <ul class="space-y-1 text-gray-700 text-sm">
+                            <li>• Instagram Insights</li>
+                            <li>• ManyChat (chatbots)</li>
+                            <li>• Mailchimp (email)</li>
+                            <li>• Google Analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 7: Časté chyby -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">7</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Časté chyby a jak se jim vyhnout</h2>
+            </div>
+
+            <div class="space-y-6">
+                <div class="border border-red-200 rounded-lg p-6 bg-red-50">
+                    <h3 class="font-outfit text-lg font-bold text-red-800 mb-2">❌ Chyba #1: Nekonzistentní posting</h3>
+                    <p class="text-red-700 mb-3 text-sm"><strong>Problém:</strong> Nepravidelné zveřejňování zabíjí algoritmus</p>
+                    <div class="bg-green-50 border border-green-200 rounded p-3">
+                        <p class="text-green-800 text-sm"><strong>✅ Řešení:</strong> Minimum 1 post denně • Konzistentní čas • Content calendar</p>
+                    </div>
+                </div>
+
+                <div class="border border-red-200 rounded-lg p-6 bg-red-50">
+                    <h3 class="font-outfit text-lg font-bold text-red-800 mb-2">❌ Chyba #2: Prodávání bez budování vztahů</h3>
+                    <p class="text-red-700 mb-3 text-sm"><strong>Problém:</strong> 80% obsahu je prodejní</p>
+                    <div class="bg-green-50 border border-green-200 rounded p-3">
+                        <p class="text-green-800 text-sm"><strong>✅ Řešení:</strong> 70-20-10 pravidlo • Value first přístup • Storytelling</p>
+                    </div>
+                </div>
+
+                <div class="border border-red-200 rounded-lg p-6 bg-red-50">
+                    <h3 class="font-outfit text-lg font-bold text-red-800 mb-2">❌ Chyba #3: Ignorování Stories</h3>
+                    <p class="text-red-700 mb-3 text-sm"><strong>Problém:</strong> Zaměření jen na feed příspěvky</p>
+                    <div class="bg-green-50 border border-green-200 rounded p-3">
+                        <p class="text-green-800 text-sm"><strong>✅ Řešení:</strong> Denní stories • Interaktivní prvky • Behind the scenes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 8: Závěr -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-outfit font-bold text-lg">8</span>
+                <h2 class="font-outfit text-3xl font-bold text-gray-900">Závěr a další kroky</h2>
+            </div>
+
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                Gratulujeme! Právě jste získali kompletní blueprint pro transformaci vašeho Instagramu v automat na peníze.
+            </p>
+
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200 mb-8">
+                <h3 class="font-outfit text-xl font-bold text-green-800 mb-4">🎯 Klíčové takeaways:</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span class="text-green-700"><strong>Instagram monetizace</strong> má 5 hlavních způsobů - začněte s affiliate marketingem</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span class="text-green-700"><strong>Konzistentnost</strong> je klíčová - lepší denně 30 minut než jednou týdně 3 hodiny</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span class="text-green-700"><strong>Value first</strong> - nejdříve hodnota, pak prodej</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span class="text-green-700"><strong>Automatizace</strong> šetří čas a zvyšuje konverze</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span class="text-green-700"><strong>Metriky</strong> vám ukážou, co funguje</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
+                <h3 class="font-outfit text-xl font-bold text-blue-800 mb-4">🚀 Váš next step - během následujících 24 hodin:</h3>
+                <ol class="space-y-2">
+                    <li class="flex items-start gap-3">
+                        <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</span>
+                        <span class="text-blue-700">Optimalizujte své bio podle formule z e-booku</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</span>
+                        <span class="text-blue-700">Vytvořte si content calendar na první týden</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</span>
+                        <span class="text-blue-700">Nastavte si lead magnet (může být tento e-book!)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</span>
+                        <span class="text-blue-700">Začněte sledovat klíčové metriky</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-2xl p-8 text-center">
+                <h3 class="font-outfit text-2xl font-bold text-orange-800 mb-4">🔥 Potřebujete pomoc s implementací?</h3>
+                <p class="text-orange-700 mb-6 leading-relaxed">
+                    Pokud chcete zrychlit proces a mít jistotu, že všechno děláte správně, nabízíme:
+                </p>
+                
+                <div class="bg-white rounded-xl p-6 mb-6 border border-orange-200">
+                    <h4 class="font-outfit text-xl font-bold text-gray-900 mb-4">
+                        🔥 60minutovou osobní konzultaci za 500 Kč
+                    </h4>
+                    <p class="text-gray-600 mb-4 text-sm">(obvykle 2.500 Kč)</p>
+                    
+                    <div class="text-left space-y-2 mb-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            <span class="text-gray-700">Provedeme audit vašeho současného Instagramu</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            <span class="text-gray-700">Vytvoříme personalizovanou strategii pro váš byznys</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            <span class="text-gray-700">Naplánujeme konkrétní kroky na příštích 90 dní</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            <span class="text-gray-700">Dostanete content kalendář na celý měsíc</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            <span class="text-gray-700">Bonus: Instagram Stories šablony v hodnotě 997 Kč</span>
+                        </div>
+                    </div>
+                    
+                    <a href="/lead-magnet?step=tripwire" 
+                       class="inline-block w-full py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:translate-y-[-2px] no-print">
+                        🔥 REZERVOVAT KONZULTACI ZA 500 KČ
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <h3 class="font-outfit text-2xl font-bold text-gray-900 mb-6">📧 Zůstaňte v kontaktu</h3>
+            
+            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                <div class="flex items-center justify-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <span>📧</span>
+                    <span class="text-gray-700">info@socialmat.cz</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <span>📱</span>
+                    <span class="text-gray-700">@socialmat_cz</span>
+                </div>
+                <div class="flex items-center justify-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <span>🌐</span>
+                    <span class="text-gray-700">socialmat.cz</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-4 text-sm text-gray-600">
+                <p class="mb-2">
+                    <strong>P.S.</strong> Pokud tento e-book implementujete a uvidíte první výsledky, pošlete nám screenshot! 
+                    Rádi vaši success story sdílíme (s vaším svolením) 🚀
+                </p>
+                <p class="text-xs">
+                    © 2025 Socialmat. Všechna práva vyhrazena. Tento e-book je určen pouze pro osobní použití.
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

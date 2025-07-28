@@ -124,7 +124,7 @@ const services = [
 // Moderní komponenta s osobností
 const Process = () => {
   return (
-    <section className="py-20 lg:py-32 bg-white" id="sluzby">
+    <section className="py-20 lg:py-32 bg-white" id="process">
       <Container className="max-w-[78rem]">
         {/* Hlavní nadpis */}
         <div className="text-center mb-16">
@@ -153,9 +153,9 @@ const Process = () => {
         </div>
 
         {/* Proces flow */}
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden lg:block absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-indigo-600 to-blue-500"></div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Connecting line for desktop */}
+          <div className="hidden lg:block absolute left-12 top-8 bottom-8 w-0.5 bg-gradient-to-b from-indigo-600 via-blue-500 to-indigo-600"></div>
           
           {services.map((service, index) => (
             <motion.div
@@ -164,70 +164,90 @@ const Process = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative flex items-center mb-20 last:mb-0 ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              }`}
+              className="relative mb-16 last:mb-0"
             >
-              {/* Content */}
-              <div className={`w-full lg:w-1/2 ${
-                index % 2 === 0 ? 'lg:pr-20' : 'lg:pl-20'
-              }`}>
-                <div className="bg-gray-50 rounded-2xl p-8 lg:p-10 hover:bg-gray-100 transition-colors duration-300">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl ${
-                      service.id === 1 
-                        ? "bg-gradient-to-r from-indigo-600 to-blue-500" 
-                        : service.id === 2 
-                        ? "bg-gradient-to-r from-indigo-600 to-blue-500" 
-                        : "bg-gradient-to-r from-indigo-600 to-blue-500"
-                    }`}>
-                      {service.id}
-                    </div>
-                    <div>
-                      <h3 className={`${outfit.className} text-2xl md:text-3xl font-bold text-gray-900 mb-3 leading-tight`}>
+              {/* Step indicator */}
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 relative">
+                  <div className={`w-24 h-24 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg ${
+                    service.id === 1 
+                      ? "bg-gradient-to-br from-pink-500 to-rose-500" 
+                      : service.id === 2 
+                      ? "bg-gradient-to-br from-blue-500 to-indigo-500" 
+                      : "bg-gradient-to-br from-green-500 to-emerald-500"
+                  } ${outfit.className}`}>
+                    {service.id}
+                  </div>
+                  {/* Pulse effect */}
+                  <div className={`absolute inset-0 rounded-2xl animate-pulse opacity-20 ${
+                    service.id === 1 
+                      ? "bg-pink-500" 
+                      : service.id === 2 
+                      ? "bg-blue-500" 
+                      : "bg-green-500"
+                  }`}></div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="mb-6">
+                      <h3 className={`${outfit.className} text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight`}>
                         {service.title}
                       </h3>
                       <p className={`${dmSans.className} text-gray-600 text-lg leading-relaxed`}>
                         {service.description}
                       </p>
                     </div>
-                  </div>
 
-                  {/* Features */}
-                  <div className="space-y-4">
-                    {service.features.map((feature, idx) => {
-                      const IconComponent = feature.icon;
-                      return (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: idx * 0.1 }}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-white transition-colors duration-200"
-                        >
-                          <div className="w-5 h-5 mt-0.5 text-indigo-600 flex-shrink-0">
-                            <IconComponent className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <h4 className={`${dmSans.className} text-base font-semibold text-gray-900 mb-1`}>
-                              {feature.text}
-                            </h4>
-                            <p className={`${dmSans.className} text-sm text-gray-600 leading-relaxed`}>
-                              {feature.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      );
-                    })}
+                    {/* Features Grid */}
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {service.features.map((feature, idx) => {
+                        const IconComponent = feature.icon;
+                        return (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: index * 0.2 + idx * 0.1 }}
+                            className="flex items-start gap-3 p-4 rounded-xl bg-white/50 hover:bg-white transition-all duration-200 border border-gray-100"
+                          >
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                              service.id === 1 
+                                ? "bg-pink-100 text-pink-600" 
+                                : service.id === 2 
+                                ? "bg-blue-100 text-blue-600" 
+                                : "bg-green-100 text-green-600"
+                            }`}>
+                              <IconComponent className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <h4 className={`${dmSans.className} text-base font-semibold text-gray-900 mb-1`}>
+                                {feature.text}
+                              </h4>
+                              <p className={`${dmSans.className} text-sm text-gray-600 leading-relaxed`}>
+                                {feature.description}
+                              </p>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Center circle */}
-              <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white border-4 border-indigo-600 rounded-full items-center justify-center">
-                <div className="w-6 h-6 bg-gradient-to-r from-indigo-600 to-blue-500 rounded-full"></div>
-              </div>
+              {/* Arrow connector (except for last item) */}
+              {index < services.length - 1 && (
+                <div className="flex justify-center my-8">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 flex items-center justify-center shadow-lg">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-10 md:pt-0">
+    <section className="debug-test relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-10 md:pt-0">
       <div className="container mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col lg:flex-row items-center max-w-6xl mx-auto justify-center">
           <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pr-10">
@@ -59,10 +59,10 @@ const Hero: React.FC = () => {
               {/* Primární CTA tlačítko - Lead magnet */}
               <a
                 href="/instagram-audit"
-                className={`${outfit.className} w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transform hover:translate-y-[-2px]`}
-                aria-label="Získat zdarma Instagram audit"
+                className={`${outfit.className} w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transform hover:translate-y-[-2px] text-center`}
+                aria-label="Stáhnout zdarma e-book o Instagramu"
               >
-                🎁 ZDARMA Instagram Audit (7.500 Kč)
+                📚 ZDARMA E-book (1.500 Kč)
               </a>
 
               {/* Sekundární akce - Přímý kontakt */}
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Urgence banner */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 rounded-lg">
+            {/* <div className="mt-6 p-4 bg-gradient-to-r from-orange-100 to-red-100 border border-orange-200 rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
                 <span className={`${outfit.className} text-sm font-bold text-orange-800 uppercase tracking-wide`}>
@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
               <p className={`${dmSans.className} text-sm text-orange-700`}>
                 Bereme pouze <strong>3 nové klienty měsíčně</strong> pro zajištění kvality. Zbývá <strong>1 místo</strong> pro leden 2025.
               </p>
-            </div>
+            </div> */}
 
             {/* Social proof statistiky */}
             <div className="mt-8 text-center lg:text-left">
@@ -139,6 +139,19 @@ const Hero: React.FC = () => {
               className="relative mx-auto h-1/2"
             />
           </div>
+        </div>
+        
+        {/* DOČASNÝ TEST BUTTON PRO EXIT-INTENT */}
+        <div className="fixed bottom-4 right-4 z-50">
+          <button
+            onClick={() => {
+              localStorage.removeItem('hasSeenExitIntent');
+              window.location.reload();
+            }}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm shadow-lg"
+          >
+            🔄 Reset Exit Intent
+          </button>
         </div>
       </div>
     </section>

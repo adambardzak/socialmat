@@ -12,9 +12,8 @@ function page() {
     <div>
       <Hero />
       <Process />
-      <TrustSignals />
+      {/* <TrustSignals /> */}
       <Testimonials />
-      <InvestmentInfo />
       <FAQ />
       <ContactForm />
     </div>
