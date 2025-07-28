@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Container from "./Container";
 import Link from "next/link";
 import { DM_Sans, Outfit } from "next/font/google";
+import { clsx } from "clsx";
 
 // Inicializace fontů, stejných jako v Hero.tsx
 const dmSans = DM_Sans({
@@ -41,15 +43,16 @@ function Navbar() {
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 lg:px-8">
       <Container
-        className={`${
-          isScrolled
-            ? "bg-white/95 shadow-lg py-3"
-            : "bg-transparent shadow-none py-5"
-        } 
-          backdrop-blur-md transition-all duration-300 rounded-xl w-full max-w-[78rem]`}
+        className={clsx(
+          isScrolled && !isMobileMenuOpen
+            ? "bg-white/95 shadow-lg py-3 rounded-xl"
+            : "bg-transparent shadow-none py-5",
+          isMobileMenuOpen && "bg-white/95 rounded-t-xl shadow-lg py-3",
+          "backdrop-blur-md transition-all duration-300  w-full max-w-[78rem]"
+        )}
         size="sm"
       >
-        <div className="grid grid-cols-3 items-center w-full relative">
+        <div className="grid grid-cols-3 items-center w-full relative z-50">
           {/* Logo */}
           <div className="flex justify-start">
             <Link
@@ -135,58 +138,79 @@ function Navbar() {
           </button>
         </div>
 
-        {/* Mobilní menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-3 border-t border-gray-100">
-            <ul className="flex flex-col space-y-4">
-              <li>
-                <Link
-                  href="/#process"
-                  className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Služby
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#testimonials"
-                  className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Reference
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/instagram-audit"
-                  className={`${dmSans.className} block text-orange-600 hover:text-orange-700 font-bold transition-colors`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  📚 ZDARMA E-book
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#kontakt"
-                  className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Kontakt
-                </Link>
-              </li>
-              <li className="pt-2">
-                <Link
-                  href="/#kontakt"
-                  className={`${outfit.className} block w-full px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 text-center`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Chci konzultaci zdarma
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
+        {/* Mobilní menu s animací a backdropem */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
+              {/* Backdrop blur overlay (starts below navbar) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed left-0 right-0 z-40 bg-black/30 backdrop-blur-md md:hidden"
+                style={{ top: "calc(4rem + 1rem)" }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+              {/* Animated mobile menu with solid white background, no shadow on top */}
+              <motion.div
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="md:hidden py-3  border-gray-100 z-50 fixed top-full left-0 right-0 bg-white rounded-b-xl"
+                style={{ top: "100%" }}
+              >
+                <ul className="flex flex-col space-y-4 px-4">
+                  <li>
+                    <Link
+                      href="/#process"
+                      className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Služby
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/#testimonials"
+                      className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Reference
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/instagram-audit"
+                      className={`${dmSans.className} block text-orange-600 hover:text-orange-700 font-bold transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      📚 ZDARMA E-book
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/#kontakt"
+                      className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Kontakt
+                    </Link>
+                  </li>
+                  <li className="pt-2">
+                    <Link
+                      href="/#kontakt"
+                      className={`${outfit.className} block w-full px-5 py-2 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300 text-center`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Chci konzultaci zdarma
+                    </Link>
+                  </li>
+                </ul>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </Container>
     </div>
   );
