@@ -199,7 +199,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Ilustrační grafika */}
-            <div className="lg:w-1/3 relative hidden md:block">
+            <div className="lg:w-1/3 relative hidden md:block bg-transparent">
               {/* Video only plays after loading screen disappears */}
               {loading ? (
                 <div className="w-full h-[400px] bg-transparent rounded-xl" />
@@ -208,8 +208,9 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0 }}
+                  className="bg-transparent"
                 >
-                  <video autoPlay muted playsInline className="">
+                  <video autoPlay muted playsInline className="bg-transparent">
                     <source src="/hero_video.mov" type="video/mp4" />
                   </video>
                 </motion.div>
