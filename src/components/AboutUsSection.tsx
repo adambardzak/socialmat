@@ -74,7 +74,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 // The main section component
 const AboutUsSection: React.FC = () => {
   return (
-    <section className="relative bg-white py-20 overflow-hidden">
+    <section className="relative bg-white py-20 overflow-hidden" id="about-us">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-blue-50 opacity-50 z-0"></div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <header className="text-center mb-16">
@@ -87,9 +87,10 @@ const AboutUsSection: React.FC = () => {
             Kdo jsme?
           </h2>
           <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-            Jsme Adam & Matyáš. Spojujeme analytiku, design, a sociální sítě do
-            jednoho silného balíčku, který posune váš projekt na další úroveň.
-            Nejsme agentura – jsme váš parťák v digitálním světě.
+            Jsme strategická dvojice, která propojuje to nejdůležitější pro
+            digitální růst – sociální sítě a výkonnostní weby. Dva světy, které
+            dnes musí spolupracovat, pokud chcete budovat značku, přitahovat
+            klienty a generovat stabilní příjem online.
           </p>
         </header>
 
@@ -110,7 +111,7 @@ const AboutUsSection: React.FC = () => {
             <TeamMemberCard
               name="Matyáš"
               role="Social Media"
-              description="Instagram je jeho hřiště. Pomáhá značkám růst, tvořit komunitu a proměnit followery v zákazníky. Vždy hledá nové trendy a nebojí se experimentovat."
+              description="Matyáš se specializuje na tvorbu obsahu, který rezonuje s lidmi i s algoritmem. Pomáhá podnikatelům přetvořit jejich Instagram v nástroj důvěry, komunitního růstu a stabilního prodeje."
               skills={[
                 "Instagram marketing",
                 "Brand building",
@@ -121,7 +122,7 @@ const AboutUsSection: React.FC = () => {
             <TeamMemberCard
               name="Adam"
               role="Web & Data"
-              description="Weby, které prodávají. UX, analytika, automatizace. Adam navrhuje digitální cesty, které jsou rychlé, funkční a připravené na růst."
+              description="Adam navrhuje webové stránky a systémy, které nejsou jen vizuálně silné, ale především výkonné. Staví weby, které vedou návštěvníky od prvního dojmu až po konverzi, a přitom drží vysoký standard použitelnosti, rychlosti i technické čistoty."
               skills={[
                 "Web design & development",
                 "UX & konverze",

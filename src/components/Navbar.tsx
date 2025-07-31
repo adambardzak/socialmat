@@ -106,13 +106,20 @@ function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/#testimonials"
+                  href="/#kontakt"
                   className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
                 >
-                  Reference
+                  Kontakt
                 </Link>
               </li>
-
+              <li>
+                <Link
+                  href="/#about-us"
+                  className={`${dmSans.className} text-gray-700 hover:text-indigo-600 font-medium transition-colors whitespace-nowrap`}
+                >
+                  Kdo jsme
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/#kontakt"
@@ -197,6 +204,15 @@ function Navbar() {
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       Služby
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/#about-us"
+                      className={`${dmSans.className} block text-gray-700 hover:text-indigo-600 font-medium transition-colors`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Kdo jsme
                     </Link>
                   </li>
                   <li>
