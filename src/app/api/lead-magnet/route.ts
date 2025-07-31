@@ -1,3 +1,4 @@
+// app/api/lead-magnet/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
 interface LeadData {
@@ -28,23 +29,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send welcome email with e-book
-    // 3. Add to email marketing list
-    // 4. Send notification to admin
-
-    // For demo purposes, we'll simulate these actions
-    console.log("New lead captured:", {
-      name: data.name,
-      email: data.email,
-      phone: data.phone || "Not provided",
-      instagramHandle: data.instagramHandle,
-      timestamp: new Date().toISOString(),
-      source: "lead-magnet-funnel",
-      ebookDelivered: true,
-    });
-
+    // Save client to Raynet CRM
+    try {
+      const { createRaynetClient } = await import("@/utils/raynetClient");
+      await createRaynetClient({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        // street: data.street || undefined,
+        // city: data.city || undefined,
+        // province: data.province || undefined,
+        // zipCode: data.zipCode || undefined,
+        country: "CZ",
+      });
+    } catch (err) {
+      console.error("Raynet CRM client creation failed:", err);
+      // Continue even if Raynet fails, but log error
+    }
     // Simulate email sending delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
