@@ -210,13 +210,12 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.7, delay: 0 }}
                   className="bg-transparent"
                 >
-                  <video
-                    autoPlay
-                    muted
-                    playsInline
-                    className="bg-white rounded-xl"
-                  >
-                    <source src="/hero_video.mov" type="video/mp4" />
+                  <video autoPlay muted playsInline className="rounded-xl">
+                    <source
+                      src="/hero_video.mov"
+                      type="video/mp4"
+                      className=""
+                    />
                   </video>
                 </motion.div>
               )}

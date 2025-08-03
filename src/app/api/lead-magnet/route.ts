@@ -31,15 +31,12 @@ export async function POST(request: NextRequest) {
 
     // Save client to Raynet CRM
     try {
+      console.log("Data received in API route:", data);
       const { createRaynetClient } = await import("@/utils/raynetClient");
       await createRaynetClient({
         name: data.name,
         email: data.email,
         phone: data.phone,
-        // street: data.street || undefined,
-        // city: data.city || undefined,
-        // province: data.province || undefined,
-        // zipCode: data.zipCode || undefined,
         country: "CZ",
       });
     } catch (err) {

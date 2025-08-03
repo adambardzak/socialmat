@@ -66,10 +66,17 @@ export async function createRaynetClient({
   zipCode?: string;
   country?: string;
 }) {
-  const endpoint = `https://app.raynet.cz/api/v2/company`;
+  const endpoint = `https://app.raynet.cz/api/v2/company/`;
 
-  const username = "adam.bardzak@gmail.com";
-  const apiKey = "crm-cf60344128c64a85a0344128c61a85b4";
+  const username = process.env.RAYNET_USERNAME;
+  const apiKey = process.env.RAYNET_API_KEY;
+
+  if (!username || !apiKey) {
+    throw new Error(
+      "RAYNET_USERNAME and RAYNET_API_KEY environment variables are required"
+    );
+  }
+
   const basicAuth = Buffer.from(`${username}:${apiKey}`).toString("base64");
 
   const headers = {
@@ -80,44 +87,40 @@ export async function createRaynetClient({
 
   const agent = new https.Agent({ rejectUnauthorized: false });
 
-  // Build Raynet payload in correct format
-  const payload: RaynetClientPayload = {
-    name: name || "jmeno",
-    rating: rating || "A",
-    state: state || "A_POTENTIAL",
-    role: role || "A_SUBSCRIBER",
+  // Build Raynet payload in correct format according to API spec
+  const payload = {
+    name: name.trim(), // Required field at root level
+    rating: rating || "A", // Required
+    state: state || "A_POTENTIAL", // Required
+    role: role || "A_SUBSCRIBER", // Required
     notice: notice || "Získáno přes lead magnet e-book.",
     addresses: [
       {
         address: {
-          name: name || "",
+          name: "Kontaktní adresa", // Address name, not person name
+          street: street || "",
+          city: city || "",
+          province: province || "",
+          zipCode: zipCode || "",
+          country: country || "CZ",
         },
         contactInfo: {
           email: email,
+          tel1: phone || "",
+          tel1Type: phone ? "BUSINESS" : "",
         },
       },
     ],
   };
 
-  console.log(
-    "Raynet request payload (JSON string):",
-    JSON.stringify(payload, null, 2)
-  );
-  console.log("Raynet request headers:", headers);
-  console.log("Raynet request endpoint:", endpoint);
-
   try {
-    const res = await axios.post(endpoint, payload, {
+    const res = await axios({
+      method: "put", // Changed to PUT as per API spec
+      url: endpoint,
+      data: payload,
       headers,
       httpsAgent: agent,
       validateStatus: () => true,
-    });
-
-    console.log("Raynet response:", {
-      status: res.status,
-      statusText: res.statusText,
-      data: res.data,
-      headers: res.headers,
     });
 
     if (res.status < 200 || res.status >= 300) {
